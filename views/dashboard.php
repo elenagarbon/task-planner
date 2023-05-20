@@ -26,9 +26,9 @@
                     <?php foreach ($boards as $board):
                         $boardId = $board['id_board'];
                         $urlId = $_GET['id_board'];
-                        $class = ($boardId == $urlId) ? 'active' : '';
+                        $classActive = ($boardId == $urlId) ? 'active' : '';
                     ?>
-                        <li class="collection-item <?php echo $class ?>">
+                        <li class="collection-item <?php echo $classActive ?>">
                             <a href="index.php?action=show_board&id_board=<?php echo $board['id_board']?>"><?= $board['name'] ?></a>
                             <div class="collection-item-actions">
                                 <a href="index.php?action=delete_board&id_board=<?php echo $board['id_board']?>" onclick="return confirm('Estas seguro?'); false"><i class="material-icons">delete</i></a>

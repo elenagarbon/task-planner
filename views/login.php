@@ -24,7 +24,7 @@
                 <button type="submit" class="btn btn-primary">Iniciar sesión</button>
             </div>
         </form>
-        <?php require_once('partials/alert_error.php') ?>
+        <?php require_once('partials/alerts.php') ?>
         <p>¿No tienes una cuenta? <a href="index.php?action=register">Regístrate</a></p>
     </div>
 </main>

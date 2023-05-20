@@ -30,6 +30,22 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        public function delete($board_id) {
+            $query = "DELETE from boards WHERE id_board = :id_board";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":id_board", $board_id);
+            return ($stmt->execute()) ? true : false;
+        }
+
+        public function getFirstBoard($user_id) {
+            $query = "SELECT id_board FROM boards WHERE id_user = :id_user ORDER BY id_board ASC LIMIT 1";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id_user', $user_id);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return ($result) ? $result['id_board'] : null;
+        }
+
         public function getName() {
             return $this->name;
         }

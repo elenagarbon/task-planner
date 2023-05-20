@@ -68,6 +68,10 @@ class RouterController {
             case 'show_board':
                 $this->boardController->getUserBoards($_SESSION['user']['id_user']);
                 break;
+            case 'delete_board':
+                $board_id = $_REQUEST['id_board'];
+                $this->boardController->deletedBoardById($board_id, $_SESSION['user']['id_user']);
+                break;
             case 'main':
                 require_once 'views/main.php';
                 break;

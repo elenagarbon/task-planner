@@ -39,5 +39,16 @@
             // Renderizar la vista que muestra los tablones del usuario
             $this->view->render("views/dashboard.php", ["boards" => $boards ?? null, "totalBoards" => $totalBoards ]);
         }
+
+        public function deletedBoardById($board_id, $user_id) {
+            if($this->board->delete($board_id)) {
+                $idFirstBoard = $this->board->getFirstBoard($user_id);
+                if($idFirstBoard == null) {
+                    header("Location:index.php?action=dashboard");
+                } else {
+                    header("Location:index.php?action=show_board&id_board=". $idFirstBoard);
+                }
+            }
+        }
     }
 ?>

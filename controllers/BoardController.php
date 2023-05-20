@@ -48,6 +48,9 @@
                 } else {
                     header("Location:index.php?action=show_board&id_board=". $idFirstBoard);
                 }
+                $_SESSION['success_message'] = 'Tablón eliminado correctamente';
+            } else {
+                $_SESSION['error_message'] = 'Error al eliminar el tablón';
             }
         }
     }

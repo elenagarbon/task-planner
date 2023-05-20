@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Task Planner Pro</title>
+	<title>Task Planner</title>
 	<!-- Estilos masterialize + personalizados -->
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>dist/css/main.css">
 	<!-- Materialize icons-->
@@ -15,7 +15,7 @@
 <nav>
     <div class="nav-wrapper">
 		<a href="index.php?action=main" class="brand-logo">
-			Task Planner Pro
+			Task Planner
 		</a>
 	  	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">

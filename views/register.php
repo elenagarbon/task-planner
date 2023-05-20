@@ -15,7 +15,7 @@
             <div class="input-field">
                 <label for="username">Nombre de usuario</label>
                 <input type="text" name="username" class="form-control validate count-char" required data-length="30">
-                <span class="helper-text" data-error="Solo se permite 40 caracteres" data-success="Correcto"></span>
+                <span class="helper-text" data-error="Solo se permite 30 caracteres" data-success="Correcto"></span>
             </div>
             <div class="input-field">
                 <label for="email">Email</label>
@@ -28,10 +28,10 @@
                 <span class="helper-text" data-error="Contraseña incorrecta" data-success="Contraseña correcta"></span>
             </div>
             <div class="input-field">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" class="btn btn-primary" name="register-user">Registrarse</button>
             </div>
         </form>
-
+        <?php require_once('partials/alerts.php') ?>
         <p>¿Ya tienes una cuenta? <a href="index.php?action=login">Inicia sesión</a></p>
     </div>
 </main>

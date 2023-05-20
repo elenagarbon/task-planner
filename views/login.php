@@ -21,7 +21,7 @@
                 <input type="password" name="password" class="form-control" required>
             </div>
             <div class="input-field">
-                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                <button type="submit" class="btn btn-primary" name="login-user">Iniciar sesión</button>
             </div>
         </form>
         <?php require_once('partials/alerts.php') ?>

@@ -21,10 +21,12 @@ class RouterController {
 
         switch ($action) {
             case 'login':
-                if ($this->session->isLoggedIn()) {
+                if ($this->session->isLoggedIn() && isset($_POST['login-user'])) {
                     header('Location: index.php?action=dashboard');
                 } else if ($this->request->isPost()) {
-                    $this->userController->login();
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    $this->userController->login($email, $password);
                 } else {
                     require_once 'views/login.php';
                 }
@@ -32,8 +34,11 @@ class RouterController {
             case 'register':
                 if ($this->session->isLoggedIn()) {
                     header('Location: index.php?action=dashboard');
-                } else if ($this->request->isPost()) {
-                    $this->userController->signUp();
+                } else if ($this->request->isPost() && isset($_POST['register-user'])) {
+                    $username = $_POST['username'];
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    $this->userController->signUp($username, $email, $password);
                 } else {
                     require_once 'views/register.php';
                 }

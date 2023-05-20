@@ -28,7 +28,7 @@
                 <span class="helper-text" data-error="Contraseña incorrecta" data-success="Contraseña correcta"></span>
             </div>
             <div class="input-field">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" class="btn btn-primary" name="register-user">Registrarse</button>
             </div>
         </form>
         <?php require_once('partials/alerts.php') ?>

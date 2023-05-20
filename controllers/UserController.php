@@ -6,55 +6,56 @@
         private $user;
         private $view;
 
-        public function __construct($conn) {
-            $this->user = new User($conn);
+        public function __construct() {
+            // Proporciono valores iniciales vacíos para asignarlos donde corresponda
+            $this->user = new User("", "", "");
             $this->view = new RenderView();
         }
 
-        public function signUp() {
-            if(empty($_POST['username']) or empty($_POST['email']) or empty($_POST['password'])) {
+        public function signUp($username, $email, $password) {
+            if (empty($username) || empty($email) || empty($password)) {
                 $error_message = 'Rellena todos los campos para registrarte';
                 $this->view->render("views/register.php", ["error_message" => $error_message]);
-            } else {
-                $username = $_POST['username'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $password_hash = password_hash($password, PASSWORD_DEFAULT);
-                $existEmail = false;
-                // verificar si ya existe el email
-                $existEmail = $this->verifyEmail($email);
+                return;
+            }
 
-                if(!$existEmail) {
-                    if($this->user->insert($username, $email, $password_hash)) {
-                        header('Location: index.php?action=login');
-                    } else {
-                        $error_message = 'Error al registrar el usuario';
-                        $this->view->render("views/register.php", ["error_message" => $error_message]);
-                    }
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            $this->user->setUsername($username);
+            $this->user->setEmail($email);
+            $this->user->setPassword($password_hash);
+
+            $existEmail = $this->verifyEmail($email);
+
+            if (!$existEmail) {
+                if ($this->user->insert()) {
+                    $message = 'Usuario registrado correctamente';
+                    $this->view->render("views/login.php", ["message" => $message]);
                 } else {
-                    $error_message = 'Ese email ya existe';
+                    $error_message = 'Error al registrar el usuario';
                     $this->view->render("views/register.php", ["error_message" => $error_message]);
                 }
+            } else {
+                $error_message = 'Ese email ya existe';
+                $this->view->render("views/register.php", ["error_message" => $error_message]);
             }
         }
 
-        public function login() {
-            if(empty($_POST['email']) or empty($_POST['password'])) {
+        public function login($email, $password) {
+            if (empty($email) || empty($password)) {
                 $error_message = 'Rellena todos los campos para iniciar sesión';
                 $this->view->render("views/login.php", ["error_message" => $error_message]);
-            } else {
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $user = $this->user->login($email, $password);
+                return;
+            }
 
-                if($user) {
-                    session_start();
-                    $_SESSION['user'] = $user;
-                    header('Location: index.php?action=dashboard');
-                } else {
-                    $error_message = 'Email o contraseña incorrectos';
-                    $this->view->render("views/login.php", ["error_message" => $error_message]);
-                }
+            $user = $this->user->login($email, $password);
+
+            if ($user) {
+                session_start();
+                $_SESSION['user'] = $user;
+                header('Location: index.php?action=dashboard');
+            } else {
+                $error_message = 'Email o contraseña incorrectos';
+                $this->view->render("views/login.php", ["error_message" => $error_message]);
             }
         }
 
@@ -66,11 +67,7 @@
 
         private function verifyEmail($email) {
             // Lógica para verificar si existe el email que ha introducio el usuariolas credenciales en la base de datos
-            $result = false;
-            if ($this->user->existUser($email)) {
-                $result = true;
-            }
-            return $result;
+            return $this->user->existUser($email);
         }
     }
 ?>

@@ -1,15 +1,18 @@
 <?php
 require_once 'controllers/UserController.php';
+require_once 'controllers/BoardController.php';
 require_once 'helpers/Request.php';
 require_once 'helpers/Session.php';
 
 class RouterController {
     private $userController;
+    private $boardController;
     private $request;
     private $session;
 
     public function __construct() {
         $this->userController = new UserController();
+        $this->boardController = new BoardController();
         $this->request = new Request();
         $this->session = new Session();
     }
@@ -46,10 +49,24 @@ class RouterController {
                 break;
             case 'dashboard':
                 if ($this->session->isLoggedIn()) {
-                    require_once 'views/dashboard.php';
+                    $this->boardController->getUserBoards($_SESSION['user']['id_user']);
                 } else {
                     header('Location: index.php?action=login');
                 }
+                break;
+            case 'create_board':
+                if ($this->request->isPost() && isset($_POST['create-board'])) {
+                    $board_name = $_POST['board_name'];
+                    $user_id = $_POST['user_id'];
+                    $this->boardController->createBoard($board_name, $user_id);
+                } else {
+                    if ($this->session->isLoggedIn()) {
+                        header('Location: index.php?action=dashboard');
+                    }
+                }
+                break;
+            case 'show_board':
+                $this->boardController->getUserBoards($_SESSION['user']['id_user']);
                 break;
             case 'main':
                 require_once 'views/main.php';

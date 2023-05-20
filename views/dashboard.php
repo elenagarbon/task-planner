@@ -53,7 +53,50 @@
         </aside>
 
         <!-- mostrar tareas de X id_board-->
-        <div class="section-task p-16"></div>
+        <div class="section-tasks p-16">
+            <div class="section-tasks-list">
+                <div class="section-tasks-header">
+                    Lista de tareas
+                </div>
+                <!-- LISTAR TAREAS -->
+                <div class="section-tasks-body">
+                    <?php
+                    if (isset($tasks)):
+                        if (count($tasks) >= 1): ?>
+                        <?php foreach ($tasks as $task):?>
+                            <div class="Card">
+                                <div class="Card-info">
+                                    <?= $task['title'] ?>
+                                </div>
+                                <div class="Card-actions pink">
+                                    <a href="index.php?action=edit_task&id_task=<?php echo $task['id_task']?>">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; else: ?>
+                            <p class="center-align">No hay tareas</p>
+                    <?php endif;?>
+                    <?php endif; ?>
+                </div>
+                <div class="section-tasks-form">
+                    <form class="col s12" action="index.php?action=create_task&id_board=<?php if (isset($_GET['id_board'])) echo $_GET['id_board'] ?>" method="post">
+                        <textarea id="icon_prefix2" name="task_title" class="materialize-textarea validate count-char" required data-length="100" placeholder="Añade titulo de tarea"></textarea>
+                        <button type="submit" name="create-task" class="btn text-white pink waves-effect waves-light">Crear</button>
+                    </form>
+                </div>
+            </div>
+            <div class="section-tasks-list">
+                <div class="section-tasks-header">
+                    En proceso
+                </div>
+            </div>
+            <div class="section-tasks-list">
+                <div class="section-tasks-header">
+                    Hecho
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 

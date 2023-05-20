@@ -1,15 +1,18 @@
 <?php
     require_once 'models/Board.php';
     require_once 'helpers/RenderView.php';
+    require_once 'controllers/TaskController.php';
 
     class BoardController {
         private $board;
         private $view;
+        private $taskController;
 
         public function __construct() {
             // Proporciono valor inicial vacío para asignarlo donde corresponda
             $this->board = new Board("", "");
             $this->view = new RenderView();
+            $this->taskController = new TaskController();
         }
 
         public function createBoard($board_name, $user_id) {
@@ -33,11 +36,16 @@
             }
         }
 
-        public function getUserBoards($user_id) {
+        public function getUserBoards($user_id, $board_id) {
             $boards = $this->board->list($user_id);
             $totalBoards = count($boards);
+            $tasks = null;
+            if ($totalBoards > 0) {
+                // Obtener todas las tareas asociadas a este tablero
+                $tasks = $this->taskController->getTasksByBoardId($board_id);
+            }
             // Renderizar la vista que muestra los tablones del usuario
-            $this->view->render("views/dashboard.php", ["boards" => $boards ?? null, "totalBoards" => $totalBoards ]);
+            $this->view->render("views/dashboard.php", ["boards" => $boards ?? null, "tasks" => $tasks ?? null, "totalBoards" => $totalBoards ]);
         }
 
         public function deletedBoardById($board_id, $user_id) {

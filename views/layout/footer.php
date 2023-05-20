@@ -6,6 +6,9 @@
 	</div>
 </footer>
 
+<?php include(__DIR__ . '/../partials/alerts_session.php'); ?>
+
+
 <!-- Scripts de Bootstrap -->
 <script src="<?php echo BASE_URL; ?>node_modules/materialize-css/dist/js/materialize.min.js"></script>
 

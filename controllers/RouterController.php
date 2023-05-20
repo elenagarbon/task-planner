@@ -4,14 +4,12 @@ require_once 'helpers/Request.php';
 require_once 'helpers/Session.php';
 
 class RouterController {
-    private $db;
     private $userController;
     private $request;
     private $session;
 
-    public function __construct($db) {
-        $this->db = $db;
-        $this->userController = new UserController($db);
+    public function __construct() {
+        $this->userController = new UserController();
         $this->request = new Request();
         $this->session = new Session();
     }

@@ -31,7 +31,7 @@
                 <button type="submit" class="btn btn-primary">Registrarse</button>
             </div>
         </form>
-
+        <?php require_once('partials/alert_error.php') ?>
         <p>¿Ya tienes una cuenta? <a href="index.php?action=login">Inicia sesión</a></p>
     </div>
 </main>

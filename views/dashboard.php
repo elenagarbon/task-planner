@@ -3,12 +3,9 @@
 
     if(!isset($_SESSION["user"])) {
         header("Location: index.php?action=main");
-    } else {
-        $boardsUser = count($boards);
-        $tasksUser = count($tasks);
     }
 ?>
-<main class="main p-dashboard <?php if ($boardsUser == 0) echo "js-init-intro"; ?>">
+<main class="main p-dashboard <?php if ($totalBoards == 0) echo "js-init-intro"; ?>">
     <div class="l-content-grid">
         <aside class="section-boards">
             <ul class="collection with-header">
@@ -30,7 +27,12 @@
                     if ($totalBoards > 0):?>
                     <?php foreach ($boards as $board):
                         $boardId = $board['id_board'];
-                        $urlId = $_GET['id_board'];
+                        $urlId = null;
+                        if(isset($_GET['id_board'])) {
+                            $urlId = $_GET['id_board'];
+                        } else {
+                            $urlId = $boardSelect;
+                        }
                         $classActive = ($boardId == $urlId) ? 'active' : '';
                     ?>
                         <li class="collection-item <?php echo $classActive ?>">
@@ -69,7 +71,7 @@
                 if (isset($boards)):
                     if ($totalBoards > 0):?>
                         <!-- LISTAR TAREAS -->
-                        <div class="section-tasks-body <?php if ($tasksUser == 0) echo "js-init-intro-tasks"; ?>">
+                        <div class="section-tasks-body">
                             <?php
                             if (isset($tasks)):
                                 if (count($tasks) >= 1): ?>
@@ -85,12 +87,14 @@
                                         </div>
                                     </div>
                                 <?php endforeach; else: ?>
-                                    <p class="center-align js-not-tasks">No hay tareas</p>
+                                    <div class="js-init-intro-tasks">
+                                        <p class="center-align js-not-tasks">No hay tareas</p>
+                                    </div>
                             <?php endif;?>
                             <?php endif; ?>
                         </div>
                         <div class="section-tasks-form js-create-tasks">
-                            <form class="col s12" action="index.php?action=create_task&id_board=<?php if (isset($_GET['id_board'])) echo $_GET['id_board'] ?>" method="post">
+                            <form class="col s12" action="index.php?action=create_task&id_board=<?php echo $boardSelect ?>" method="post">
                                 <textarea id="icon_prefix2" name="task_title" class="materialize-textarea validate count-char" required data-length="100" placeholder="Añade titulo de tarea"></textarea>
                                 <button type="submit" name="create-task" class="btn text-white pink waves-effect waves-light">Crear</button>
                             </form>

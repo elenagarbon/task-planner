@@ -3,9 +3,12 @@
 
     if(!isset($_SESSION["user"])) {
         header("Location: index.php?action=main");
+    } else {
+        $boardsUser = count($boards);
+        $tasksUser = count($tasks);
     }
 ?>
-<main class="main p-dashboard">
+<main class="main p-dashboard <?php if ($boardsUser == 0) echo "js-init-intro"; ?>">
     <div class="l-content-grid">
         <aside class="section-boards">
             <ul class="collection with-header">
@@ -16,7 +19,9 @@
                             if ($totalBoards > 4): ?>
                                 <a class="btn tooltipped Button--disabled" data-position="right" data-tooltip="Elimina un tablón para crear más"><i class="large material-icons">add</i></a>
                             <?php else: ?>
-                                <a class="btn pink waves-effect waves-light modal-trigger tooltipped" data-position="right" data-tooltip="Crear un tablón" <?php if (count($boards) > 4) { echo "disabled"; } ?> href="#modal_create_board" id="openModalButton"><i class="large material-icons">add</i></a>
+                                <a class="btn pink waves-effect waves-light modal-trigger tooltipped" data-position="right" data-tooltip="Crear un tablón" <?php if (count($boards) > 4) { echo "disabled"; } ?> href="#modal_create_board" id="openModalButton">
+                                    <i class="large material-icons">add</i>
+                                </a>
                             <?php endif; ?>
                     <?php endif; ?>
                 </li>
@@ -35,7 +40,9 @@
                             </div>
                         </li>
                     <?php endforeach;else: ?>
-                        <li class="collection-item center-align">Comienza creando tu primer tablón en el botón +</li>
+                        <li class="collection-item center-align js-first-step">
+                            No hay tablones
+                        </li>
                 <?php endif;
                  endif; ?>
             </ul>
@@ -58,33 +65,38 @@
                 <div class="section-tasks-header">
                     Lista de tareas
                 </div>
-                <!-- LISTAR TAREAS -->
-                <div class="section-tasks-body">
-                    <?php
-                    if (isset($tasks)):
-                        if (count($tasks) >= 1): ?>
-                        <?php foreach ($tasks as $task):?>
-                            <div class="Card">
-                                <div class="Card-info">
-                                    <?= $task['title'] ?>
-                                </div>
-                                <div class="Card-actions pink">
-                                    <a href="index.php?action=edit_task&id_task=<?php echo $task['id_task']?>">
-                                        <i class="material-icons">edit</i>
-                                    </a>
-                                </div>
-                            </div>
-                        <?php endforeach; else: ?>
-                            <p class="center-align">No hay tareas</p>
-                    <?php endif;?>
-                    <?php endif; ?>
-                </div>
-                <div class="section-tasks-form">
-                    <form class="col s12" action="index.php?action=create_task&id_board=<?php if (isset($_GET['id_board'])) echo $_GET['id_board'] ?>" method="post">
-                        <textarea id="icon_prefix2" name="task_title" class="materialize-textarea validate count-char" required data-length="100" placeholder="Añade titulo de tarea"></textarea>
-                        <button type="submit" name="create-task" class="btn text-white pink waves-effect waves-light">Crear</button>
-                    </form>
-                </div>
+                <?php
+                if (isset($boards)):
+                    if ($totalBoards > 0):?>
+                        <!-- LISTAR TAREAS -->
+                        <div class="section-tasks-body <?php if ($tasksUser == 0) echo "js-init-intro-tasks"; ?>">
+                            <?php
+                            if (isset($tasks)):
+                                if (count($tasks) >= 1): ?>
+                                <?php foreach ($tasks as $task):?>
+                                    <div class="Card">
+                                        <div class="Card-info">
+                                            <?= $task['title'] ?>
+                                        </div>
+                                        <div class="Card-actions pink">
+                                            <a href="index.php?action=edit_task&id_task=<?php echo $task['id_task']?>">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; else: ?>
+                                    <p class="center-align js-not-tasks">No hay tareas</p>
+                            <?php endif;?>
+                            <?php endif; ?>
+                        </div>
+                        <div class="section-tasks-form js-create-tasks">
+                            <form class="col s12" action="index.php?action=create_task&id_board=<?php if (isset($_GET['id_board'])) echo $_GET['id_board'] ?>" method="post">
+                                <textarea id="icon_prefix2" name="task_title" class="materialize-textarea validate count-char" required data-length="100" placeholder="Añade titulo de tarea"></textarea>
+                                <button type="submit" name="create-task" class="btn text-white pink waves-effect waves-light">Crear</button>
+                            </form>
+                        </div>
+                <?php endif;
+                 endif; ?>
             </div>
             <div class="section-tasks-list">
                 <div class="section-tasks-header">

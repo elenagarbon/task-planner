@@ -1,15 +1,18 @@
 <?php
     require_once 'models/Board.php';
     require_once 'helpers/RenderView.php';
+    require_once 'controllers/TaskController.php';
 
     class BoardController {
         private $board;
         private $view;
+        private $taskController;
 
         public function __construct() {
             // Proporciono valor inicial vacío para asignarlo donde corresponda
             $this->board = new Board("", "");
             $this->view = new RenderView();
+            $this->taskController = new TaskController();
         }
 
         public function createBoard($board_name, $user_id) {
@@ -33,11 +36,30 @@
             }
         }
 
-        public function getUserBoards($user_id) {
+        public function getUserBoards($user_id, $board_id = null) {
+            $tasks = null;
+            $id_first_board = null;
             $boards = $this->board->list($user_id);
-            $totalBoards = count($boards);
+            $boardSelect = null;
+            if (!empty($boards)) {
+                if ($board_id) {
+                    $tasks = $this->taskController->getTasksByBoardId($board_id);
+                    $boardSelect = $board_id;
+                } else {
+                    $id_first_board = $this->board->getFirstBoard($user_id);
+                    $tasksFirstBoard =  $this->taskController->getTasksByBoardId($id_first_board);
+                    $tasks = $tasksFirstBoard;
+                    $boardSelect = $id_first_board;
+                }
+            }
+
             // Renderizar la vista que muestra los tablones del usuario
-            $this->view->render("views/dashboard.php", ["boards" => $boards ?? null, "totalBoards" => $totalBoards ]);
+            $this->view->render("views/dashboard.php", [
+                "boards" => $boards ?? null,
+                "tasks" => $tasks ?? null,
+                "totalBoards" => count($boards),
+                "boardSelect" => $boardSelect ?? null
+            ]);
         }
 
         public function deletedBoardById($board_id, $user_id) {

@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>dist/css/main.css">
 	<!-- Materialize icons-->
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>node_modules/material-icons/iconfont/material-icons.css">
+	<!-- Intro.js -->
+	<link rel="stylesheet" href="<?php echo BASE_URL; ?>node_modules/intro.js/minified/introjs.min.css">
 </head>
 <body>
 <header>
@@ -20,8 +22,10 @@
 	  	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 	  <?php
-			if(isset($_SESSION["user"])) {
-			?>
+			if(isset($_SESSION["user"])) {?>
+				<?php if ($_GET['action'] == 'main') : ?>
+					<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
+				<?php endif; ?>
 				<li><?php echo "Hola ". $_SESSION["user"]["email"] ?></li>
 				<!-- Dropdown Trigger -->
 				<li id="dropdown-navbar">

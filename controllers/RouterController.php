@@ -1,18 +1,21 @@
 <?php
 require_once 'controllers/UserController.php';
 require_once 'controllers/BoardController.php';
+require_once 'controllers/TaskController.php';
 require_once 'helpers/Request.php';
 require_once 'helpers/Session.php';
 
 class RouterController {
     private $userController;
     private $boardController;
+    private $taskController;
     private $request;
     private $session;
 
     public function __construct() {
         $this->userController = new UserController();
         $this->boardController = new BoardController();
+        $this->taskController = new TaskController();
         $this->request = new Request();
         $this->session = new Session();
     }
@@ -66,11 +69,23 @@ class RouterController {
                 }
                 break;
             case 'show_board':
-                $this->boardController->getUserBoards($_SESSION['user']['id_user']);
+                $board_id = $_REQUEST['id_board'];
+                $this->boardController->getUserBoards($_SESSION['user']['id_user'], $board_id);
                 break;
             case 'delete_board':
                 $board_id = $_REQUEST['id_board'];
                 $this->boardController->deletedBoardById($board_id, $_SESSION['user']['id_user']);
+                break;
+            case 'create_task':
+                if ($this->request->isPost() && isset($_POST['create-task'])) {
+                    $board_id = $_REQUEST['id_board'];
+                    $title = $_POST['task_title'];
+                    $this->taskController->createTask($board_id, $title);
+                } else {
+                    if ($this->session->isLoggedIn()) {
+                        header('Location: index.php?action=dashboard');
+                    }
+                }
                 break;
             case 'main':
                 require_once 'views/main.php';

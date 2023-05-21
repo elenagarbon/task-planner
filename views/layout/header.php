@@ -23,7 +23,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 	  <?php
 			if(isset($_SESSION["user"])) {?>
-				<?php if ($_GET['action'] == 'main') : ?>
+				<?php if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
 					<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
 				<?php endif; ?>
 				<li><?php echo "Hola ". $_SESSION["user"]["email"] ?></li>

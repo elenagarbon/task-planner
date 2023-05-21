@@ -39,6 +39,27 @@
             return $result;
         }
 
+        public function getById($id_task) {
+            $query = "SELECT * FROM tasks WHERE id_task = :id_task";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":id_task", $id_task);
+            $stmt->execute();
+            $task = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $task;
+        }
+
+        public function update($id_task) {
+            $query = "UPDATE tasks SET title = :title, description = :description, priority = :priority, type = :type, expiration_date = :expiration_date WHERE id_task = :id_task";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':title', $this->title);
+            $stmt->bindParam(':description', $this->description);
+            $stmt->bindParam(':priority', $this->priority);
+            $stmt->bindParam(':type', $this->type);
+            $stmt->bindParam(':expiration_date', $this->expiration_date);
+            $stmt->bindParam(':id_task', $id_task);
+            return $stmt->execute();
+        }
+
         public function getTitle() {
             return $this->title;
         }

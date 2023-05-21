@@ -36,16 +36,30 @@
             }
         }
 
-        public function getUserBoards($user_id, $board_id) {
-            $boards = $this->board->list($user_id);
-            $totalBoards = count($boards);
+        public function getUserBoards($user_id, $board_id = null) {
             $tasks = null;
-            if ($totalBoards > 0) {
-                // Obtener todas las tareas asociadas a este tablero
-                $tasks = $this->taskController->getTasksByBoardId($board_id);
+            $id_first_board = null;
+            $boards = $this->board->list($user_id);
+            $boardSelect = null;
+            if (!empty($boards)) {
+                if ($board_id) {
+                    $tasks = $this->taskController->getTasksByBoardId($board_id);
+                    $boardSelect = $board_id;
+                } else {
+                    $id_first_board = $this->board->getFirstBoard($user_id);
+                    $tasksFirstBoard =  $this->taskController->getTasksByBoardId($id_first_board);
+                    $tasks = $tasksFirstBoard;
+                    $boardSelect = $id_first_board;
+                }
             }
+
             // Renderizar la vista que muestra los tablones del usuario
-            $this->view->render("views/dashboard.php", ["boards" => $boards ?? null, "tasks" => $tasks ?? null, "totalBoards" => $totalBoards ]);
+            $this->view->render("views/dashboard.php", [
+                "boards" => $boards ?? null,
+                "tasks" => $tasks ?? null,
+                "totalBoards" => count($boards),
+                "boardSelect" => $boardSelect ?? null
+            ]);
         }
 
         public function deletedBoardById($board_id, $user_id) {

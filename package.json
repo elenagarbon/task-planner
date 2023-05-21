@@ -21,6 +21,7 @@
     "sass": "^1.62.0"
   },
   "dependencies": {
+    "intro.js": "^7.0.1",
     "material-icons": "^1.13.4",
     "materialize-css": "^1.0.0"
   }

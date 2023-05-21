@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>dist/css/main.css">
 	<!-- Materialize icons-->
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>node_modules/material-icons/iconfont/material-icons.css">
+	<!-- Intro.js -->
+	<link rel="stylesheet" href="<?php echo BASE_URL; ?>node_modules/intro.js/minified/introjs.min.css">
 </head>
 <body>
 <header>

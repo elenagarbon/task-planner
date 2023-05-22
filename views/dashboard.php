@@ -30,7 +30,7 @@
                                             <?= $task['title'] ?>
                                         </div>
                                         <div class="Card-actions pink">
-                                            <a href="index.php?action=edit_task&id_board=<?php echo $board['id_board']?>&id_task=<?php echo $task['id_task']?>">
+                                            <a href="index.php?action=edit_task&id_task=<?php echo $task['id_task']?>">
                                                 <i class="material-icons">edit</i>
                                             </a>
                                         </div>
@@ -43,7 +43,7 @@
                             <?php endif; ?>
                         </div>
                         <div class="section-tasks-form js-create-tasks">
-                            <form class="col s12" action="index.php?action=create_task&id_board=<?php echo $boardSelect ?>" method="post">
+                            <form class="col s12" action="index.php?action=create_task&id_board=<?php echo isset($_GET['id_board']) ? $_GET['id_board'] : $boardSelect; ?>" method="post">
                                 <textarea id="task_title" name="task_title" class="materialize-textarea validate count-char" required data-length="100" placeholder="Añade titulo de tarea"></textarea>
                                 <button type="submit" name="create-task" class="btn text-white pink waves-effect waves-light">Crear</button>
                             </form>

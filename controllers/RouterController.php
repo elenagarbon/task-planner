@@ -97,8 +97,8 @@ class RouterController {
                     $description = $_POST['description'];
                     $priority = $_POST['priority'];
                     $type = $_POST['type'];
-                    $expiration_date = $_POST['expiration_date'];
-                    $id_board = $_REQUEST['id_board'];
+                    $expiration_date = ($_POST['expiration_date'] !== '') ? $_POST['expiration_date'] : null;
+                    $id_board = $_POST['id_board'];
                     $this->taskController->updateTask($id_task, $title, $description, $priority, $type, $expiration_date, $id_board);
                 } else {
                     if ($this->session->isLoggedIn()) {

@@ -20,22 +20,13 @@
                 if (isset($boards)):
                     if ($totalBoards > 0):?>
                         <!-- LISTAR TAREAS -->
-                        <div class="section-tasks-body">
+                        <div class="section-tasks-body scroll">
                             <?php
                             if (isset($tasks)):
                                 if (count($tasks) >= 1): ?>
-                                <?php foreach ($tasks as $task):?>
-                                    <div class="Card">
-                                        <div class="Card-info">
-                                            <?= $task['title'] ?>
-                                        </div>
-                                        <div class="Card-actions pink">
-                                            <a href="index.php?action=edit_task&id_task=<?php echo $task['id_task']?>">
-                                                <i class="material-icons">edit</i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endforeach; else: ?>
+                                <?php foreach ($tasks as $task):
+                                        require('partials/card_template.php');
+                                 endforeach; else: ?>
                                     <div class="js-init-intro-tasks">
                                         <p class="center-align js-not-tasks">No hay tareas</p>
                                     </div>
@@ -43,9 +34,9 @@
                             <?php endif; ?>
                         </div>
                         <div class="section-tasks-form js-create-tasks">
-                            <form class="col s12" action="index.php?action=create_task&id_board=<?php echo isset($_GET['id_board']) ? $_GET['id_board'] : $boardSelect; ?>" method="post">
-                                <textarea id="task_title" name="task_title" class="materialize-textarea validate count-char" required data-length="100" placeholder="Añade titulo de tarea"></textarea>
-                                <button type="submit" name="create-task" class="btn text-white pink waves-effect waves-light">Crear</button>
+                            <form class="col s12 form-task" action="index.php?action=create_task&id_board=<?php echo isset($_GET['id_board']) ? $_GET['id_board'] : $boardSelect; ?>" method="post">
+                                <input type="text" name="task_title" class="validate count-char" required data-length="45" maxlength="45" placeholder="Añade titulo de tarea" autocomplete="off"/>
+                                <button type="submit" name="create-task" class="btn text-white pink waves-effect waves-light"><i class="large material-icons">add</i></button>
                             </form>
                         </div>
                 <?php endif;

@@ -12,7 +12,7 @@
         ),
         "student" => array(
             "name" => "Estudio",
-            "image" => "resources/images/study.png"
+            "image" => "resources/images/student.png"
         ),
         "house" => array(
             "name" => "Casa",

@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <label for="title_task">Título</label>
-                    <input id="title_task" type="text" value="<?php echo $title; ?>" name="title" class="form-control validate count-char" required data-length="30">
+                    <input id="title_task" type="text" value="<?php echo $title; ?>" name="title" class="form-control validate count-char" required data-length="45" maxlength="45">
                 </div>
             </div>
             <div class="row">
@@ -54,17 +54,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
-                    <select id="priority_task" name="priority">
-                        <option value="" disabled selected>Elige una opción</option>
+                <div class="col s12">
+                    <div class="wrapper-radios">
                         <?php
                             foreach ($priorities as $value => $name) {
-                                $selected = ($value == $priority) ? "selected" : "";
-                                echo "<option value='$value' $selected>$name</option>";
+                                $checked = ($value == $priority) ? "checked" : "";
+                                echo "<label>
+                                        <input class='with-gap' name='priority' type='radio' value='$value ' $checked/>
+                                        <span>$name prioridad</span>
+                                    </label>";
                             }
                         ?>
-                    </select>
-                    <label>Prioridad</label>
+                    </div>
                 </div>
             </div>
             <div class="row">

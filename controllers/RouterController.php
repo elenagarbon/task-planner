@@ -94,7 +94,7 @@ class RouterController {
                 if ($this->request->isPost() && isset($_POST['update-task'])) {
                     $id_task = $_REQUEST['id_task'];
                     $title = $_POST['title'];
-                    $description = $_POST['description'];
+                    $description = ($_POST['description'] !== '') ? $_POST['description'] : null;
                     $priority = $_POST['priority'];
                     $type = $_POST['type'];
                     $expiration_date = ($_POST['expiration_date'] !== '') ? $_POST['expiration_date'] : null;

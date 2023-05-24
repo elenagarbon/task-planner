@@ -87,13 +87,21 @@
             <div class="row">
                 <div class="input-field col s12">
                     <label>Fecha de vencimiento</label>
-                    <input type="text" id="datepiker-task" class="datepicker" name="expiration_date" value="<?php echo !empty($expiration_date) ? $expiration_date : null ; ?>" data-date="<?php echo $expiration_date; ?>">
+                    <input
+                        type="text"
+                        id="datepiker-task"
+                        class="datepicker"
+                        name="expiration_date"
+                        value="<?php echo !empty($expiration_date) ? $expiration_date : null ; ?>"
+                        data-date="<?php echo $expiration_date; ?>"
+                        autocomplete="off"
+                    />
                 </div>
             </div>
             <input type="hidden" name="id_board" value="<?php echo $id_board; ?>"/>
             <div class="row">
                 <div class="input-field col s12">
-                    <button type="submit" class="btn btn-primary" name="update-task">editar</button>
+                    <button type="submit" class="btn pink waves-effect waves-light" name="update-task">editar</button>
                 </div>
             </div>
         </form>

@@ -87,6 +87,25 @@ class RouterController {
                     }
                 }
                 break;
+            case 'edit_task':
+                require_once 'views/edit.php';
+                break;
+            case 'update_task':
+                if ($this->request->isPost() && isset($_POST['update-task'])) {
+                    $id_task = $_REQUEST['id_task'];
+                    $title = $_POST['title'];
+                    $description = ($_POST['description'] !== '') ? $_POST['description'] : null;
+                    $priority = $_POST['priority'];
+                    $type = $_POST['type'];
+                    $expiration_date = ($_POST['expiration_date'] !== '') ? $_POST['expiration_date'] : null;
+                    $id_board = $_POST['id_board'];
+                    $this->taskController->updateTask($id_task, $title, $description, $priority, $type, $expiration_date, $id_board);
+                } else {
+                    if ($this->session->isLoggedIn()) {
+                        header('Location: index.php?action=dashboard');
+                    }
+                }
+                break;
             case 'main':
                 require_once 'views/main.php';
                 break;

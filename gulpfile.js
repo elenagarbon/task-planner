@@ -6,6 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var cssnano = require('gulp-cssnano');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var imagemin = require('gulp-imagemin');
 
 gulp.task('sass', function(done) {
   gulp.src([
@@ -28,6 +29,12 @@ gulp.task('minify-js', function(done) {
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
     .on('end', done);
+});
+
+gulp.task('optimize-images', function() {
+  return gulp.src('resources/images/**/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('reload', function(done) {
@@ -56,4 +63,4 @@ gulp.task('watch', function () {
 
 });
 
-gulp.task('default', gulp.series('sass', 'minify-js', 'serve'));
+gulp.task('default', gulp.series('sass', 'minify-js', 'optimize-images', 'serve'));

@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <label for="description_task">Descripción</label>
-                    <textarea id="description_task" name="description" class="materialize-textarea validate count-char" data-length="255" placeholder="Añade una descripción"><?php echo $description; ?></textarea>
+                    <textarea id="description_task" name="description" class="materialize-textarea validate count-char" data-length="255" maxlength="255" placeholder="Añade una descripción"><?php echo $description; ?></textarea>
                 </div>
             </div>
             <div class="row">

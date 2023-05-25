@@ -25,7 +25,8 @@
                             if (isset($tasks)):
                                 if (count($tasks) >= 1): ?>
                                 <?php foreach ($tasks as $task):
-                                        require('partials/card_template.php');
+                                    $boardId = $task['id_board'];
+                                    require('partials/card_template.php');
                                  endforeach; else: ?>
                                     <div class="js-init-intro-tasks">
                                         <p class="center-align js-not-tasks">No hay tareas</p>

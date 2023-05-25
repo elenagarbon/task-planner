@@ -106,6 +106,11 @@ class RouterController {
                     }
                 }
                 break;
+            case 'delete_task':
+                $task_id = $_REQUEST['id_task'];
+                $board_id = $_REQUEST['id_board'];
+                $this->taskController->deletedTaskById($task_id, $board_id );
+                break;
             case 'main':
                 require_once 'views/main.php';
                 break;

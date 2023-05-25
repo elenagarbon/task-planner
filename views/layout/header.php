@@ -13,41 +13,42 @@
 </head>
 <body>
 <header>
-
-<nav>
-    <div class="nav-wrapper">
-		<a href="index.php?action=main" class="brand-logo">
-			Task Planner
-		</a>
-	  	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	  <?php
-			if(isset($_SESSION["user"])) {?>
-				<?php if (isset($_GET['action'])):
-						if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
-						<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
-				<?php endif; endif; ?>
-				<li><?php echo "Hola ". $_SESSION["user"]["email"] ?></li>
-				<!-- Dropdown Trigger -->
-				<li id="dropdown-navbar">
-					<a class='dropdown-trigger' href='#' data-target='dropdown1'>
-						<i class=" material-icons">account_circle</i>
-					</a>
-				</li>
-				<!-- Dropdown Structure -->
-				<ul id='dropdown1' class='dropdown-content'>
-					<li><a href="#!">Mi perfil</a></li>
-					<li><a href="index.php?action=logout">Cerrar sesión</a></li>
-				</ul>
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="index.php?action=main" class="brand-logo">
+					Task Planner
+				</a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<?php
-			} else {
-			?>
-				<li><a href="index.php?action=register">Registrate</a></li>
-				<li><a href="index.php?action=login">Inicia sesión</a></li>
-			<?php
-			}
-			?>
-      </ul>
-    </div>
-  </nav>
+					if(isset($_SESSION["user"])) {?>
+						<?php if (isset($_GET['action'])):
+								if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
+								<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
+						<?php endif; endif; ?>
+						<li><?php echo "Hola ". $_SESSION["user"]["email"] ?></li>
+						<!-- Dropdown Trigger -->
+						<li id="dropdown-navbar">
+							<a class='dropdown-trigger' href='#' data-target='dropdown1'>
+								<i class=" material-icons">account_circle</i>
+							</a>
+						</li>
+						<!-- Dropdown Structure -->
+						<ul id='dropdown1' class='dropdown-content'>
+							<li><a href="#!">Mi perfil</a></li>
+							<li><a href="index.php?action=logout">Cerrar sesión</a></li>
+						</ul>
+					<?php
+					} else {
+					?>
+						<li><a href="index.php?action=register">Registrate</a></li>
+						<li><a href="index.php?action=login">Inicia sesión</a></li>
+					<?php
+					}
+					?>
+			</ul>
+			</div>
+		</nav>
+	</div>
 </header>

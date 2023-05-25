@@ -23,7 +23,10 @@
                         <li class="collection-item <?php echo $classActive ?>">
                             <a href="index.php?action=show_board&id_board=<?php echo $boardId?>"><?= $board['name'] ?></a>
                             <div class="collection-item-actions">
-                                <a href="index.php?action=delete_board&id_board=<?php echo $boardId?>" onclick="return confirm('Estas seguro?'); false"><i class="material-icons">delete</i></a>
+                                <a href="index.php?action=delete_board&id_board=<?php echo $boardId?>"
+                                    onclick="return confirm('¿Estas seguro? Todas las tareas del tablón se eliminarán'); false">
+                                    <i class="material-icons">delete</i>
+                                </a>
                             </div>
                         </li>
                     <?php endforeach;else: ?>

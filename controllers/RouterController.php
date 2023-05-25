@@ -25,9 +25,9 @@ class RouterController {
 
         switch ($action) {
             case 'login':
-                if ($this->session->isLoggedIn() && isset($_POST['login-user'])) {
+                if ($this->session->isLoggedIn()) {
                     header('Location: index.php?action=dashboard');
-                } else if ($this->request->isPost()) {
+                } else if ($this->request->isPost() && isset($_POST['login-user'])) {
                     $email = $_POST['email'];
                     $password = $_POST['password'];
                     $this->userController->login($email, $password);
@@ -69,7 +69,7 @@ class RouterController {
                 }
                 break;
             case 'show_board':
-                $board_id = $_REQUEST['id_board'];
+                $board_id = (isset($_REQUEST['id_board'])) ? $_REQUEST['id_board'] : null;
                 $this->boardController->getUserBoards($_SESSION['user']['id_user'], $board_id);
                 break;
             case 'delete_board':

@@ -1,9 +1,5 @@
 <footer class="page-footer">
-	<div class="footer-copyright">
-		<div class="container">
-		© 2023 Copyright TaskPlannerPro
-		</div>
-	</div>
+	<div class="footer-copyright">© 2023 Copyright TaskPlannerPro</div>
 </footer>
 
 <?php include(__DIR__ . '/../partials/alerts_session.php'); ?>

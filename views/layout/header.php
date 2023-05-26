@@ -14,7 +14,7 @@
 <body>
 <header>
 	<div class="navbar-fixed">
-		<nav>
+		<nav class="main-nav">
 			<div class="nav-wrapper">
 				<a href="index.php?action=main" class="brand-logo">
 					Task Planner

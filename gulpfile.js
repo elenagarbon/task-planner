@@ -7,6 +7,7 @@ var cssnano = require('gulp-cssnano');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
+var imageminPngquant = require('imagemin-pngquant');
 
 gulp.task('sass', function(done) {
   gulp.src([
@@ -33,7 +34,9 @@ gulp.task('minify-js', function(done) {
 
 gulp.task('optimize-images', function() {
   return gulp.src('resources/images/**/*')
-    .pipe(imagemin())
+    .pipe(imagemin([
+      imageminPngquant({ quality: [0.5, 0.7] })
+    ]))
     .pipe(gulp.dest('dist/images'));
 });
 

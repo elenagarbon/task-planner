@@ -40,7 +40,7 @@
                 <h4>Editar tarea</h4>
             </div>
         </div>
-        <form action="index.php?action=update_task&id_board=<?php echo $id_board; ?>&id_task=<?php echo $task_id; ?>" method="post">
+        <form class="form-edit" action="index.php?action=update_task&id_board=<?php echo $id_board; ?>&id_task=<?php echo $task_id; ?>" method="post">
             <div class="row">
                 <div class="input-field col s12">
                     <label for="title_task">Título</label>
@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <label for="description_task">Descripción</label>
-                    <textarea id="description_task" name="description" class="materialize-textarea validate count-char" data-length="255" placeholder="Añade una descripción"><?php echo $description; ?></textarea>
+                    <textarea id="description_task" name="description" class="materialize-textarea validate count-char" data-length="255" maxlength="255" placeholder="Añade una descripción"><?php echo $description; ?></textarea>
                 </div>
             </div>
             <div class="row">
@@ -101,7 +101,7 @@
             <input type="hidden" name="id_board" value="<?php echo $id_board; ?>"/>
             <div class="row">
                 <div class="input-field col s12">
-                    <button type="submit" class="btn pink waves-effect waves-light" name="update-task">editar</button>
+                    <button type="submit" class="btn waves-effect waves-light" name="update-task">editar</button>
                 </div>
             </div>
         </form>

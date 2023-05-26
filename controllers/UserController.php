@@ -52,7 +52,7 @@
             if ($user) {
                 session_start();
                 $_SESSION['user'] = $user;
-                header('Location: index.php?action=dashboard');
+                header('Location: index.php?action=show_board');
             } else {
                 $error_message = 'Email o contraseña incorrectos';
                 $this->view->render("views/login.php", ["error_message" => $error_message]);

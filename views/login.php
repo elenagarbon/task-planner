@@ -9,7 +9,9 @@
 <main class="main">
     <div class="container">
         <div class="row">
-            <h2>Iniciar sesión</h2>
+            <div class="col s12">
+                <h2>Iniciar sesión</h2>
+            </div>
         </div>
         <form action="index.php?action=login" method="post">
             <div class="input-field">

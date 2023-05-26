@@ -60,5 +60,14 @@
             }
             header("Location:index.php?action=show_board&id_board=".$board_id);
         }
+
+        public function deletedTaskById($task_id, $board_id ) {
+            if($this->task->delete($task_id)) {
+                $_SESSION['success_message'] = 'Tarea eliminada correctamente';
+            } else {
+                $_SESSION['error_message'] = 'Error al eliminar la tarea';
+            }
+            header("Location:index.php?action=show_board&id_board=". $board_id);
+        }
     }
 ?>

@@ -8,27 +8,27 @@
     $taskTypes = array(
         "work" => array(
             "name" => "Trabajo",
-            "image" => "resources/images/work.png"
+            "image" => "dist/images/work.png"
         ),
         "student" => array(
             "name" => "Estudio",
-            "image" => "resources/images/student.png"
+            "image" => "dist/images/student.png"
         ),
         "house" => array(
             "name" => "Casa",
-            "image" => "resources/images/house.png"
+            "image" => "dist/images/house.png"
         ),
         "birthday" => array(
             "name" => "Cumpleaños",
-            "image" => "resources/images/birthday.png"
+            "image" => "dist/images/birthday.png"
         ),
         "payment" => array(
             "name" => "Pagos",
-            "image" => "resources/images/payment.png"
+            "image" => "dist/images/payment.png"
         ),
         "other" => array(
             "name" => "Otros",
-            "image" => "resources/images/other.png"
+            "image" => "dist/images/other.png"
         ),
     );
 ?>

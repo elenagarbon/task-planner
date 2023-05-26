@@ -60,6 +60,13 @@
             return $stmt->execute();
         }
 
+        public function delete($task_id) {
+            $query = "DELETE from tasks WHERE id_task = :id_task";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":id_task", $task_id);
+            return ($stmt->execute()) ? true : false;
+        }
+
         public function getTitle() {
             return $this->title;
         }

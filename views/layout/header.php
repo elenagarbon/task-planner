@@ -27,7 +27,7 @@
 								if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
 								<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
 						<?php endif; endif; ?>
-						<li><?php echo "Hola ". $_SESSION["user"]["email"] ?></li>
+						<li><?php echo "Hola ". $_SESSION["user"]["nickname"] ?></li>
 						<!-- Dropdown Trigger -->
 						<li id="dropdown-navbar">
 							<a class='dropdown-trigger' href='#' data-target='dropdown1'>
@@ -36,7 +36,11 @@
 						</li>
 						<!-- Dropdown Structure -->
 						<ul id='dropdown1' class='dropdown-content'>
-							<li><a href="#!">Mi perfil</a></li>
+							<li class="h-pointer-none">
+								<a href="#!">
+									Conectado con <?php echo $_SESSION["user"]["email"] ?>
+								</a>
+							</li>
 							<li><a href="index.php?action=logout">Cerrar sesión</a></li>
 						</ul>
 					<?php

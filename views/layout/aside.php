@@ -7,7 +7,7 @@
                     if ($totalBoards > 4): ?>
                         <a class="btn tooltipped Button--disabled" data-position="right" data-tooltip="Elimina un tablón para crear más"><i class="large material-icons">add</i></a>
                     <?php else: ?>
-                        <a class="btn pink waves-effect waves-light modal-trigger tooltipped" data-position="right" data-tooltip="Crear un tablón" <?php if (count($boards) > 4) { echo "disabled"; } ?> href="#modal_create_board" id="openModalButton">
+                        <a class="btn waves-effect waves-light modal-trigger tooltipped" data-position="right" data-tooltip="Crear un tablón" <?php if (count($boards) > 4) { echo "disabled"; } ?> href="#modal_create_board" id="openModalButton">
                             <i class="large material-icons">add</i>
                         </a>
                     <?php endif; ?>

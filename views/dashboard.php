@@ -1,5 +1,6 @@
 <?php
     require_once('layout/header.php');
+    require_once('helpers/FormatDate.php');
 
     if(!isset($_SESSION["user"])) {
         header("Location: index.php?action=main");

@@ -4,7 +4,9 @@
             <div class="Card-title">
                 <span><?= $task['title'] ?></span>
             </div>
-            <div class="Card-date"><?= $task['expiration_date'] ?></div>
+            <div class="Card-date">
+                <?php echo getFormattedDate($task['expiration_date']); ?>
+            </div>
         </div>
         <img class="Card-icon" src="dist/images/<?= $task['type'] ?>.png" alt="" />
     </div>

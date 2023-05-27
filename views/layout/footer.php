@@ -12,7 +12,7 @@
 <script src="<?php echo BASE_URL; ?>node_modules/intro.js/minified/intro.min.js"></script>
 
 <!-- Scripts personalizados -->
-<script src="<?php echo BASE_URL; ?>resources/js/script.js"></script>
+<script src="<?php echo BASE_URL; ?>dist/js/scripts.js"></script>
 
 </body>
 </html>

@@ -53,6 +53,9 @@
                     Hecho
                 </div>
             </div>
+            <div>
+                <?php  require('partials/filters.php'); ?>
+            </div>
         </div>
     </div>
 </main>

@@ -6,7 +6,7 @@
             </div>
             <div class="Card-date"><?= $task['expiration_date'] ?></div>
         </div>
-        <img class="Card-icon" src="resources/images/<?= $task['type'] ?>.png" alt="" />
+        <img class="Card-icon" src="dist/images/<?= $task['type'] ?>.png" alt="" />
     </div>
     <div class="Card-buttons">
         <a class="Card-buttons-item activator">

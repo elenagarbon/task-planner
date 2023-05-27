@@ -1,4 +1,4 @@
-<div class="card Card Card--<?php echo $task['priority']?>">
+<div class="card Card Card--<?= $task['priority']?> js-task-card" data-priority="<?= $task['priority']?>" data-date="<?= $task['expiration_date'] ?>">
     <div class="Card-info">
         <div>
             <div class="Card-title">
@@ -12,11 +12,11 @@
         <a class="Card-buttons-item activator">
             <i class="material-icons activator">info_outline</i>
         </a>
-        <a class="Card-buttons-item" href="index.php?action=edit_task&id_task=<?php echo $task['id_task']?>">
+        <a class="Card-buttons-item" href="index.php?action=edit_task&id_task=<?= $task['id_task']?>">
             <i class="material-icons">edit</i>
         </a>
         <a class="Card-buttons-item"
-            href="index.php?action=delete_task&id_board=<?php echo $boardId?>&id_task=<?php echo $task['id_task']?>"
+            href="index.php?action=delete_task&id_board=<?= $boardId?>&id_task=<?= $task['id_task']?>"
             onclick="return confirm('¿Estas seguro? Vas a elimimar la tarea de forma permanente'); false">
             <i class="material-icons">delete</i>
         </a>

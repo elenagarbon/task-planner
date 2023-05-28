@@ -1,17 +1,22 @@
 <ul id="dropdown-filter" class="dropdown-content">
     <li>
-        <a href="#!" data-filter="high">
+        <a href="#!" data-filter="high" class="js-filter-btn">
             Prioridad alta
         </a>
     </li>
     <li>
-        <a href="#!" data-filter="expire_tomorrow">
+        <a href="#!" data-filter="expire_tomorrow" class="js-filter-btn">
             Vence al dia siguiente
         </a>
     </li>
     <li>
-        <a href="#!" data-filter="not_expire">
+        <a href="#!" data-filter="not_expire" class="js-filter-btn">
             Sin fecha de vencimiento
+        </a>
+    </li>
+    <li>
+        <a href="#!" data-filter="show_all" class="js-filter-btn">
+            Mostrar todas
         </a>
     </li>
 </ul>

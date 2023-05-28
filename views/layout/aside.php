@@ -30,7 +30,7 @@
                     </div>
                 </li>
             <?php endforeach;else: ?>
-                <li class="collection-item center-align js-first-step">
+                <li class="collection-item center-align grey-text lighten-3 js-first-step">
                     No hay tablones
                 </li>
         <?php endif;

@@ -1,6 +1,7 @@
 <?php
     require_once 'models/Task.php';
     require_once 'helpers/RenderView.php';
+    require_once 'helpers/FormatDate.php' ;
 
     class TaskController {
         private $task;
@@ -51,7 +52,8 @@
             $this->task->setDescription($description);
             $this->task->setPriority($priority);
             $this->task->setType($type);
-            $this->task->setExpirationDate($expiration_date);
+            $exp_date_format = convertDateToDatabaseFormat($expiration_date);
+            $this->task->setExpirationDate($exp_date_format);
 
             if ($this->task->update($task_id)) {
                 $_SESSION['success_message'] = 'Tarea actualizada correctamente';

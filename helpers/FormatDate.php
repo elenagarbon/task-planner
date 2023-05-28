@@ -15,4 +15,10 @@
 
         return '';
     }
+
+    function convertDateToDatabaseFormat($original_date) {
+        $obj_date = DateTime::createFromFormat('M d, Y', $original_date);
+        $date_format = $obj_date->format('Y-m-d');
+        return $date_format;
+    }
 ?>

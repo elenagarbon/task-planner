@@ -20,13 +20,15 @@
                 if (isset($boards)):
                     if ($totalBoards > 0):?>
                         <!-- LISTAR TAREAS -->
-                        <div class="section-tasks-body scroll js-column">
+                        <div class="section-tasks-body scroll js-column" data-status="list">
                             <?php
                             if (isset($tasks)):
                                 if (count($tasks) >= 1): ?>
                                 <?php foreach ($tasks as $task):
-                                    $boardId = $task['id_board'];
-                                    require('partials/card_template.php');
+                                     if ($task['status'] == 'list') {
+                                        $boardId = $task['id_board'];
+                                        require('partials/card_template.php');
+                                    }
                                  endforeach; else: ?>
                                     <div class="js-init-intro-tasks h-pointer-none">
                                         <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
@@ -42,13 +44,43 @@
                 <div class="section-tasks-header">
                     En proceso
                 </div>
-                <div class="section-tasks-body scroll  js-column"></div>
+                <div class="section-tasks-body scroll js-column" data-status="inprogress">
+                    <?php
+                        if (isset($tasks)):
+                            if (count($tasks) >= 1): ?>
+                            <?php foreach ($tasks as $task):
+                                    if ($task['status'] == 'inprogress') {
+                                    $boardId = $task['id_board'];
+                                    require('partials/card_template.php');
+                                }
+                                endforeach; else: ?>
+                                <div class="js-init-intro-tasks h-pointer-none">
+                                    <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
+                                </div>
+                        <?php endif;?>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="section-tasks-list">
                 <div class="section-tasks-header">
                     Hecho
                 </div>
-                <div class="section-tasks-body scroll js-column"></div>
+                <div class="section-tasks-body scroll js-column" data-status="done">
+                    <?php
+                        if (isset($tasks)):
+                            if (count($tasks) >= 1): ?>
+                            <?php foreach ($tasks as $task):
+                                    if ($task['status'] == 'done') {
+                                    $boardId = $task['id_board'];
+                                    require('partials/card_template.php');
+                                }
+                                endforeach; else: ?>
+                                <div class="js-init-intro-tasks h-pointer-none">
+                                    <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
+                                </div>
+                        <?php endif;?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>

@@ -7,15 +7,17 @@
         private $priority;
         private $type;
         private $expiration_date;
+        private $status;
         private $id_board;
         private $conn;
 
-        public function __construct($title, $description, $priority, $type, $expiration_date, $id_board) {
+        public function __construct($title, $description, $priority, $type, $expiration_date, $status, $id_board) {
             $this->title = $title;
             $this->description = $description;
             $this->priority = $priority;
             $this->type = $type;
             $this->expiration_date = $expiration_date;
+            $this->status = $status;
             $this->id_board = $id_board;
 
             $db = new Database();
@@ -67,6 +69,14 @@
             return ($stmt->execute()) ? true : false;
         }
 
+        public function updateStatus($task_id, $status) {
+            $query = "UPDATE tasks SET status = :status WHERE id_task = :id_task";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':id_task', $task_id);
+            return ($stmt->execute()) ? true : false;
+        }
+
         public function getTitle() {
             return $this->title;
         }
@@ -105,6 +115,14 @@
 
         public function setExpirationDate($expiration_date) {
             $this->expiration_date = $expiration_date;
+        }
+
+        public function getStatus() {
+            return $this->status;
+        }
+
+        public function setStatus($status) {
+            $this->status = $status;
         }
 
         public function getIdBoard() {

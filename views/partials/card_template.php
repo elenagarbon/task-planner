@@ -1,4 +1,4 @@
-<div draggable="true" class="js-task">
+<div draggable="true" class="js-task" data-status="<?= $task['status']?>" data-taskId="<?= $task['id_task'] ?>">
     <div class="card Card Card--<?php echo $task['priority']?>">
         <div class="Card-info">
             <div>

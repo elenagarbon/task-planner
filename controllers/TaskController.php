@@ -69,5 +69,13 @@
             }
             header("Location:index.php?action=show_board&id_board=". $board_id);
         }
+
+        public function updateTaskStatus($task_id, $status) {
+            if ($this->task->updateStatus($task_id, $status)) {
+                $_SESSION['success_message'] = 'Estado de la tarea actualizado correctamente';
+            } else {
+                $_SESSION['error_message'] = 'Error al actualizar el estado de la tarea';
+            }
+        }
     }
 ?>

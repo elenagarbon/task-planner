@@ -1,11 +1,11 @@
-<div class="card Card Card--<?= $task['priority']?> js-task-card" data-priority="<?= $task['priority']?>" data-date="<?= $task['expiration_date'] ?>">
+<div class="card Card Card--<?= $task['priority']?> js-task-card" data-priority="<?= $task['priority']?>" data-exp="<?= $task['expiration_date'] ?>">
     <div class="Card-info">
         <div>
             <div class="Card-title">
                 <span><?= $task['title'] ?></span>
             </div>
             <div class="Card-date">
-                <?php echo getFormattedDate($task['expiration_date']); ?>
+                <?php echo ($task['expiration_date'] != '') ? getFormattedDate($task['expiration_date']) : 'Sin fecha'; ?>
             </div>
         </div>
         <img class="Card-icon" src="dist/images/<?= $task['type'] ?>.png" alt="" />

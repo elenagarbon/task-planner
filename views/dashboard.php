@@ -43,14 +43,12 @@
                     En proceso
                 </div>
                 <div class="section-tasks-body scroll  js-column"></div>
-                <?php require('partials/task_form.php') ?>
             </div>
             <div class="section-tasks-list">
                 <div class="section-tasks-header">
                     Hecho
                 </div>
                 <div class="section-tasks-body scroll js-column"></div>
-                <?php require('partials/task_form.php') ?>
             </div>
         </div>
     </div>

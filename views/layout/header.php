@@ -20,13 +20,12 @@
 					Task Planner
 				</a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<?php
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<?php
 					if(isset($_SESSION["user"])) {?>
-						<?php if (isset($_GET['action'])):
-								if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
-								<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
-						<?php endif; endif; ?>
+						<?php if (!isset($_GET['action']) || (isset($_GET['action']) && $_GET['action'] !== 'show_board' && $_GET['action'] !== 'dashboard') ): ?>
+							<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
+						<?php endif;?>
 						<li><?php echo "Hola ". $_SESSION["user"]["nickname"] ?></li>
 						<!-- Dropdown Trigger -->
 						<li id="dropdown-navbar">
@@ -51,7 +50,7 @@
 					<?php
 					}
 					?>
-			</ul>
+				</ul>
 			</div>
 		</nav>
 	</div>

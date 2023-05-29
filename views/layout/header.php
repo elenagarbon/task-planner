@@ -23,8 +23,9 @@
 								<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<?php endif; endif; ?>
 					<?php } else {?>
-						<a class='dropdown-trigger hide-on-med-and-up' href='#' data-target='dropdown2'>
-							<i class=" material-icons">menu</i>
+						<!-- boton abrir inicio + registro -->
+						<a class='dropdown-trigger dropdown-trigger hide-on-large-only' href='#' data-target='dropdown2'>
+							<i class="material-icons">menu</i>
 						</a>
 					<?php
 					}
@@ -58,13 +59,13 @@
 						<?php
 					} else {
 						?>
-						<li><a href="index.php?action=register">Registrate</a></li>
-						<li><a href="index.php?action=login">Inicia sesión</a></li>
+						<li class="hide-on-med-and-down"><a href="index.php?action=register">Registrate</a></li>
+						<li class="hide-on-med-and-down"><a href="index.php?action=login">Inicia sesión</a></li>
 					<?php } ?>
 				</ul>
 				<?php if(!isset($_SESSION["user"])) :?>
 					<!-- Dropdown Structure -->
-					<ul id='dropdown2' class='dropdown-content show-on-medium-and-up'>
+					<ul id='dropdown2' class='dropdown-content hide-on-large-only'>
 						<li><a href="index.php?action=register">Registrate</a></li>
 						<li><a href="index.php?action=login">Inicia sesión</a></li>
 					</ul>

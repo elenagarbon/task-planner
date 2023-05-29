@@ -16,42 +16,59 @@
 	<div class="navbar-fixed">
 		<nav class="main-nav">
 			<div class="nav-wrapper">
-				<a href="index.php?action=main" class="brand-logo">
-					Task Planner
-				</a>
-				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<?php
-					if(isset($_SESSION["user"])) {?>
-						<?php if (isset($_GET['action'])):
-								if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
-								<li><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
-						<?php endif; endif; ?>
-						<li><?php echo "Hola ". $_SESSION["user"]["nickname"] ?></li>
-						<!-- Dropdown Trigger -->
-						<li id="dropdown-navbar">
-							<a class='dropdown-trigger' href='#' data-target='dropdown1'>
-								<i class=" material-icons">account_circle</i>
-							</a>
-						</li>
-						<!-- Dropdown Structure -->
-						<ul id='dropdown1' class='dropdown-content'>
-							<li class="h-pointer-none">
-								<a href="#!">
-									Conectado con <?php echo $_SESSION["user"]["email"] ?>
-								</a>
-							</li>
-							<li><a href="index.php?action=logout">Cerrar sesión</a></li>
-						</ul>
-					<?php
-					} else {
-					?>
-						<li><a href="index.php?action=register">Registrate</a></li>
-						<li><a href="index.php?action=login">Inicia sesión</a></li>
+				<a href="index.php?action=main" class="brand-logo">Task Planner</a>
+				<?php if(isset($_SESSION["user"])) {?>
+					<?php if (isset($_GET['action'])):
+							if ($_GET['action'] == 'show_board' or $_GET['action'] == 'dashboard') : ?>
+								<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+					<?php endif; endif; ?>
+					<?php } else {?>
+						<a class='dropdown-trigger hide-on-med-and-up' href='#' data-target='dropdown2'>
+							<i class=" material-icons">menu</i>
+						</a>
 					<?php
 					}
-					?>
-			</ul>
+				?>
+				<ul id="nav-mobile" class="right">
+				<?php if(isset($_SESSION["user"])) {?>
+					<?php if (isset($_GET['action'])):
+							if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
+								<li class="hide-on-med-and-down"><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
+							<?php endif; ?>
+							<li class="hide-on-med-and-down"><?php echo "Hola ". $_SESSION["user"]["nickname"] ?></li>
+							<!-- Dropdown Trigger -->
+							<li id="dropdown-navbar">
+								<a class='dropdown-trigger' href='#' data-target='dropdown1'>
+									<i class=" material-icons">account_circle</i>
+								</a>
+							</li>
+							<!-- Dropdown Structure -->
+							<ul id='dropdown1' class='dropdown-content'>
+								<?php if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
+									<li class="hide-on-large-only"><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
+								<?php endif; ?>
+								<li class="h-pointer-none">
+									<a href="#!">
+										Conectado con <?php echo $_SESSION["user"]["email"] ?>
+									</a>
+								</li>
+								<li><a href="index.php?action=logout">Cerrar sesión</a></li>
+							</ul>
+						<?php endif; ?>
+						<?php
+					} else {
+						?>
+						<li><a href="index.php?action=register">Registrate</a></li>
+						<li><a href="index.php?action=login">Inicia sesión</a></li>
+					<?php } ?>
+				</ul>
+				<?php if(!isset($_SESSION["user"])) :?>
+					<!-- Dropdown Structure -->
+					<ul id='dropdown2' class='dropdown-content show-on-medium-and-up'>
+						<li><a href="index.php?action=register">Registrate</a></li>
+						<li><a href="index.php?action=login">Inicia sesión</a></li>
+					</ul>
+				<?php endif ?>
 			</div>
 		</nav>
 	</div>

@@ -13,6 +13,14 @@
 </head>
 <body>
 <header>
+	<?php
+		$url = $_SERVER['REQUEST_URI'];
+		if (strpos($url, 'dashboard') !== false || strpos($url, 'show_board') !== false) {
+			$hideButton = true;
+		} else {
+			$hideButton = false;
+		}
+	?>
 	<div class="navbar-fixed">
 		<nav class="main-nav">
 			<div class="nav-wrapper">
@@ -31,33 +39,30 @@
 					}
 				?>
 				<ul id="nav-mobile" class="right">
-				<?php if(isset($_SESSION["user"])) {?>
-					<?php if (isset($_GET['action'])):
-							if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
-								<li class="hide-on-med-and-down"><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
+					<?php if(isset($_SESSION["user"])) {?>
+						<?php if (!$hideButton): ?>
+							<li class="hide-on-med-and-down"><a href="index.php?action=dashboard">Ir a mis tablones</a></li>
+						<?php endif; ?>
+						<li class="hide-on-med-and-down"><?php echo "Hola ". $_SESSION["user"]["nickname"] ?></li>
+						<!-- Dropdown Trigger -->
+						<li id="dropdown-navbar">
+							<a class='dropdown-trigger' href='#' data-target='dropdown1'>
+								<i class=" material-icons">account_circle</i>
+							</a>
+						</li>
+						<!-- Dropdown Structure -->
+						<ul id='dropdown1' class='dropdown-content'>
+							<?php if (!$hideButton): ?>
+								<li class="hide-on-large-only"><a href="index.php?action=dashboard">Ir a mis tablones</a></li>
 							<?php endif; ?>
-							<li class="hide-on-med-and-down"><?php echo "Hola ". $_SESSION["user"]["nickname"] ?></li>
-							<!-- Dropdown Trigger -->
-							<li id="dropdown-navbar">
-								<a class='dropdown-trigger' href='#' data-target='dropdown1'>
-									<i class=" material-icons">account_circle</i>
+							<li class="h-pointer-none">
+								<a href="#!">
+									Conectado con <?php echo $_SESSION["user"]["email"] ?>
 								</a>
 							</li>
-							<!-- Dropdown Structure -->
-							<ul id='dropdown1' class='dropdown-content'>
-								<?php if ($_GET['action'] == 'main' or $_GET['action'] == 'edit_task') : ?>
-									<li class="hide-on-large-only"><a href="index.php?action=dashboard">Ir a mi tablones</a></li>
-								<?php endif; ?>
-								<li class="h-pointer-none">
-									<a href="#!">
-										Conectado con <?php echo $_SESSION["user"]["email"] ?>
-									</a>
-								</li>
-								<li><a href="index.php?action=logout">Cerrar sesión</a></li>
-							</ul>
-						<?php endif; ?>
-						<?php
-					} else {
+							<li><a href="index.php?action=logout">Cerrar sesión</a></li>
+						</ul>
+					<?php } else {
 						?>
 						<li class="hide-on-med-and-down"><a href="index.php?action=register">Registrate</a></li>
 						<li class="hide-on-med-and-down"><a href="index.php?action=login">Inicia sesión</a></li>

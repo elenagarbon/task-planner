@@ -1,6 +1,9 @@
 <?php
     if(isset($_SESSION["user"])) {?>
     <ul id="slide-out" class="sidenav sidenav-fixed collection with-header">
+        <li class="collection-header collection-header--small">
+            <a class="sidenav-close" href="#!"><i class="material-icons">close</i></a>
+        </li>
         <li class="collection-header">
             <h5>Mis tablones</h5>
             <?php if (isset($boards)):

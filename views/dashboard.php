@@ -44,7 +44,7 @@
                 <div class="section-tasks-header">
                     En proceso
                 </div>
-                <div class="section-tasks-body scroll js-column" data-status="inprogress">
+                <div class="section-tasks-body section-tasks-body--empty scroll js-column" data-status="inprogress">
                     <?php
                         if (isset($tasks)):
                             if (count($tasks) >= 1): ?>
@@ -53,11 +53,7 @@
                                     $boardId = $task['id_board'];
                                     require('partials/card_template.php');
                                 }
-                                endforeach; else: ?>
-                                <div class="js-init-intro-tasks h-pointer-none">
-                                    <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
-                                </div>
-                        <?php endif;?>
+                                endforeach; endif; ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -65,7 +61,7 @@
                 <div class="section-tasks-header">
                     Hecho
                 </div>
-                <div class="section-tasks-body scroll js-column" data-status="done">
+                <div class="section-tasks-body section-tasks-body--empty scroll js-column" data-status="done">
                     <?php
                         if (isset($tasks)):
                             if (count($tasks) >= 1): ?>
@@ -74,11 +70,7 @@
                                     $boardId = $task['id_board'];
                                     require('partials/card_template.php');
                                 }
-                                endforeach; else: ?>
-                                <div class="js-init-intro-tasks h-pointer-none">
-                                    <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
-                                </div>
-                        <?php endif;?>
+                                endforeach; endif; ?>
                     <?php endif; ?>
                 </div>
             </div>

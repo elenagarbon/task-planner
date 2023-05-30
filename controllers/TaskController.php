@@ -42,6 +42,7 @@
         }
 
         public function updateTask($task_id, $title, $description, $priority, $type, $expiration_date, $board_id) {
+            $expiration = null;
             if (empty($title)) {
                 $_SESSION['error_message'] = 'Rellena el título de la tarea';
                 header("Location:index.php?action=edit_task&task_id=".$task_id);
@@ -52,8 +53,15 @@
             $this->task->setDescription($description);
             $this->task->setPriority($priority);
             $this->task->setType($type);
-            $exp_date_format = convertDateToDatabaseFormat($expiration_date);
-            $this->task->setExpirationDate($exp_date_format);
+
+            if ($expiration_date != null) {
+                $exp_date_format = convertDateToDatabaseFormat($expiration_date);
+                $expiration = $exp_date_format;
+            } else {
+                $expiration = $expiration_date;
+            }
+
+            $this->task->setExpirationDate($expiration);
 
             if ($this->task->update($task_id)) {
                 $_SESSION['success_message'] = 'Tarea actualizada correctamente';

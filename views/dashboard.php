@@ -16,6 +16,15 @@
         function renderTaskListSection($sectionTitle, $status, $tasks)
         {
             $classList = ($status !== 'list') ? 'section-tasks-body--empty' : '';
+            // Ordenar las tareas por prioridad
+            if (isset($tasks) && count($tasks) >= 1) {
+                usort($tasks, function($a, $b) {
+                    $priorities = ['high', 'medium', 'low'];
+                    $priorityA = array_search($a['priority'], $priorities);
+                    $priorityB = array_search($b['priority'], $priorities);
+                    return $priorityA - $priorityB;
+                });
+            }
             ?>
             <div class="section-tasks-list">
                 <div class="section-tasks-header">

@@ -1,5 +1,5 @@
 <!-- Modal Create Board -->
-<div id="modal_create_board" class="modal">
+<div id="modal_create_board" class="modal modal--medium">
     <form action="index.php?action=create_board" method="post">
     <div class="modal-content">
         <h4>Crear tablón</h4>

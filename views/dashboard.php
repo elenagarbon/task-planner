@@ -11,71 +11,48 @@
 
     <!-- mostrar tareas de X id_board-->
     <div class="section-tasks p-16">
-        <div class="section-tasks-list">
-            <div class="section-tasks-header">
-                Lista de tareas
-            </div>
-            <?php
-            if (isset($boards)):
-                if ($totalBoards > 0):?>
-                    <!-- LISTAR TAREAS -->
-                    <div class="section-tasks-body scroll js-column" data-status="list">
-                        <?php
-                        if (isset($tasks)):
-                            if (count($tasks) >= 1): ?>
-                            <?php foreach ($tasks as $task):
-                                    if ($task['status'] == 'list') {
-                                    $boardId = $task['id_board'];
-                                    require('partials/card_template.php');
-                                }
-                                endforeach; else: ?>
-                                <div class="js-init-intro-tasks h-pointer-none">
-                                    <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
-                                </div>
-                        <?php endif;?>
-                        <?php endif; ?>
-                    </div>
-                    <?php require('partials/task_form.php') ?>
-            <?php endif;
-                endif; ?>
-        </div>
-        <div class="section-tasks-list">
-            <div class="section-tasks-header">
-                En proceso
-            </div>
-            <div class="section-tasks-body section-tasks-body--empty scroll js-column" data-status="inprogress">
-                <?php
-                    if (isset($tasks)):
-                        if (count($tasks) >= 1): ?>
-                        <?php foreach ($tasks as $task):
-                                if ($task['status'] == 'inprogress') {
+
+        <?php
+        function renderTaskListSection($sectionTitle, $status, $tasks)
+        {
+            $classList = ($status !== 'list') ? 'section-tasks-body--empty' : '';
+            ?>
+            <div class="section-tasks-list">
+                <div class="section-tasks-header">
+                    <?php echo $sectionTitle; ?>
+                </div>
+                <div class="section-tasks-body scroll js-column <?= $classList; ?>" data-status="<?php echo $status; ?>">
+                    <?php
+                    if (isset($tasks) && count($tasks) >= 1):
+                        foreach ($tasks as $task):
+                            if ($task['status'] == $status) {
                                 $boardId = $task['id_board'];
                                 require('partials/card_template.php');
                             }
-                            endforeach; endif; ?>
-                <?php endif; ?>
+                        endforeach;
+                    else: ?>
+                        <div class="js-init-intro-tasks h-pointer-none">
+                            <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <?php if ($status === 'list') {
+                    require('partials/task_form.php');
+                } ?>
             </div>
-        </div>
-        <div class="section-tasks-list">
-            <div class="section-tasks-header">
-                Hecho
-            </div>
-            <div class="section-tasks-body section-tasks-body--empty scroll js-column" data-status="done">
-                <?php
-                    if (isset($tasks)):
-                        if (count($tasks) >= 1): ?>
-                        <?php foreach ($tasks as $task):
-                                if ($task['status'] == 'done') {
-                                $boardId = $task['id_board'];
-                                require('partials/card_template.php');
-                            }
-                            endforeach; endif; ?>
-                <?php endif; ?>
-            </div>
-            <div>
-                <?php  require('partials/filters.php'); ?>
-            </div>
-        </div>
+        <?php
+        }
+
+        renderTaskListSection("Lista de tareas", "list", $tasks);
+        renderTaskListSection("En proceso", "inprogress", $tasks);
+        renderTaskListSection("Hecho", "done", $tasks);
+        renderTaskListSection("Descartar", "discard", $tasks);
+
+
+        if (isset($tasks) && count($tasks) >= 1) {
+            require('partials/filters.php');
+        }
+        ?>
     </div>
 </main>
 

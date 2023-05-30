@@ -2,7 +2,7 @@
     require_once('layout/header.php');
 
     if(isset($_SESSION["user"])) {
-        header("Location:dashboard.php");
+        header('Location: index.php?action=dashboard');
     }
 ?>
 

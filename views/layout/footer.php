@@ -11,6 +11,9 @@
 <!-- Scripts intro.js -->
 <script src="<?php echo BASE_URL; ?>node_modules/intro.js/minified/intro.min.js"></script>
 
+<!-- Scripts Sortable -->
+<script src="<?php echo BASE_URL; ?>node_modules/sortablejs/Sortable.min.js"></script>
+
 <!-- Scripts personalizados -->
 <script src="<?php echo BASE_URL; ?>dist/js/scripts.js"></script>
 

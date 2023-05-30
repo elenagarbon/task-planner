@@ -69,14 +69,6 @@
             return ($stmt->execute()) ? true : false;
         }
 
-        public function updateStatus($task_id, $status) {
-            $query = "UPDATE tasks SET status = :status WHERE id_task = :id_task";
-            $stmt = $db->prepare($query);
-            $stmt->bindParam(':status', $status);
-            $stmt->bindParam(':id_task', $task_id);
-            return ($stmt->execute()) ? true : false;
-        }
-
         public function getTitle() {
             return $this->title;
         }

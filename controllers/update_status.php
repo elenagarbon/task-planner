@@ -1,5 +1,5 @@
 <?php
-    // Recuperar los datos de la solicitud
+    require_once '../config/database.php';
     $json_data = file_get_contents('php://input');
     $data = json_decode($json_data, true);
     $task_id = $data['task_id'];
@@ -7,9 +7,8 @@
 
     // Realizar la actualización en la base de datos
     try {
-        $db = new PDO('mysql:host=localhost;dbname=bbdd_task_planner', 'root', '');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo  $task_id;
+        $database = new Database();
+        $db = $database->getConnection();
         $query = "UPDATE tasks SET status = :status WHERE id_task = :id_task";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':status', $status);

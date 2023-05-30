@@ -1,5 +1,5 @@
-<div draggable="true" class="js-task" data-status="<?= $task['status']?>" data-taskId="<?= $task['id_task'] ?>">
-    <div class="card Card Card--<?= $task['priority']?> js-task-card" data-priority="<?= $task['priority']?>" data-exp="<?= $task['expiration_date'] ?>">
+<div draggable="true" class="js-task js-task-card" data-status="<?= $task['status']?>" data-taskId="<?= $task['id_task'] ?>" data-priority="<?= $task['priority']?>" data-exp="<?= $task['expiration_date'] ?>">
+    <div class="card Card Card--<?= $task['priority']?>">
         <div class="Card-info">
             <div>
                 <div class="Card-title">

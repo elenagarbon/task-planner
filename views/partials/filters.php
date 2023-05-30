@@ -1,58 +1,16 @@
-<ul id="dropdown-filter" class="dropdown-content">
-    <li>
-        <a href="#!" data-filter="high" class="js-filter-btn">
-            Prioridad alta
-        </a>
-    </li>
-    <li>
-        <a href="#!" data-filter="expire_tomorrow" class="js-filter-btn">
-            Vence al dia siguiente
-        </a>
-    </li>
-    <li>
-        <a href="#!" data-filter="not_expire" class="js-filter-btn">
-            Sin fecha de vencimiento
-        </a>
-    </li>
-    <li>
-        <a href="#!" data-filter="show_all" class="js-filter-btn">
-            Mostrar todas
-        </a>
-    </li>
-</ul>
-<a class="btn dropdown-trigger" href="#!" data-target="dropdown-filter">
-    Filtrar
-    <i class="material-icons right">filter_list</i>
-</a>
-
-<ul id="dropdown-type" class="dropdown-content">
-    <li>
-        <a href="#!" data-filter="work">
-            Trabajo
-        </a>
-    </li>
-    <li>
-        <a href="#!" data-filter="study">
-            Estudios
-        </a>
-    </li>
-    <li>
-        <a href="#!" data-filter="birthday">
-            Cumpleaños
-        </a>
-    </li>
-    <li>
-        <a href="#!" data-filter="payment">
-            Pagos pendientes
-        </a>
-    </li>
-    <li>
-        <a href="#!" data-filter="other">
-            Otros
-        </a>
-    </li>
-</ul>
-<a class="btn dropdown-trigger" href="#!" data-target="dropdown-type">
-    Filtrar por tipo
-    <i class="material-icons right">filter_list</i>
-</a>
+<div id="dropdown-filter" class="fixed-action-btn click-to-toggle js-init-intro-filters">
+    <a class="btn btn-floating btn-large waves-effect waves-light js-filters-btn">
+        <i class="large material-icons">filter_list</i>
+    </a>
+    <ul>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="not_expire">Sin fecha de vencimiento</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="expire_tomorrow">Vence al día siguiente</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="high">Prioridad alta</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="payment">Pagos pendientes</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="birthday">Cumpleaños</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="study">Estudios</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="work">Trabajo</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="other">Otros</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="show_all">Mostrar todas</a></li>
+    </ul>
+</div>

@@ -17,12 +17,8 @@
     }
 
     function convertDateToDatabaseFormat($original_date) {
-        // echo $original_date;
-        // echo "cacaaaa";
         $obj_date = DateTime::createFromFormat('M d, Y', $original_date);
         $date_format = $obj_date->format('Y-m-d');
-        // echo $date_format;
-        // die();
         return $date_format;
     }
 ?>

@@ -53,10 +53,8 @@
             $this->task->setDescription($description);
             $this->task->setPriority($priority);
             $this->task->setType($type);
-
-            if ($expiration_date != null) {
-                $exp_date_format = convertDateToDatabaseFormat($expiration_date);
-                $expiration = $exp_date_format;
+            if ($expiration_date !== null) {
+                $expiration = convertDateToDatabaseFormat($expiration_date);
             } else {
                 $expiration = $expiration_date;
             }

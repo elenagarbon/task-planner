@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2023 a las 09:42:57
+-- Tiempo de generación: 31-05-2023 a las 17:41:03
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -46,6 +46,7 @@ CREATE TABLE `tasks` (
   `priority` enum('low','medium','high') DEFAULT 'low',
   `type` enum('work','student','house','birthday','payment','other') DEFAULT 'other',
   `expiration_date` date DEFAULT NULL,
+  `status` enum('list','inprogress','done','discard') DEFAULT 'list',
   `id_board` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

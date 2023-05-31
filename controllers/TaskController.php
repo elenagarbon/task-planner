@@ -1,6 +1,7 @@
 <?php
     require_once 'models/Task.php';
     require_once 'helpers/RenderView.php';
+    require_once 'helpers/FormatDate.php' ;
 
     class TaskController {
         private $task;
@@ -41,6 +42,7 @@
         }
 
         public function updateTask($task_id, $title, $description, $priority, $type, $expiration_date, $board_id) {
+            $expiration = null;
             if (empty($title)) {
                 $_SESSION['error_message'] = 'Rellena el título de la tarea';
                 header("Location:index.php?action=edit_task&task_id=".$task_id);
@@ -51,7 +53,13 @@
             $this->task->setDescription($description);
             $this->task->setPriority($priority);
             $this->task->setType($type);
-            $this->task->setExpirationDate($expiration_date);
+            if ($expiration_date !== null) {
+                $expiration = convertDateToDatabaseFormat($expiration_date);
+            } else {
+                $expiration = $expiration_date;
+            }
+
+            $this->task->setExpirationDate($expiration);
 
             if ($this->task->update($task_id)) {
                 $_SESSION['success_message'] = 'Tarea actualizada correctamente';

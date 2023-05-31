@@ -39,11 +39,12 @@
                                 require('partials/card_template.php');
                             }
                         endforeach;
-                    else: ?>
+                    else:
+                        if ($status == 'list'): ?>
                         <div class="js-init-intro-tasks h-pointer-none">
                             <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
                         </div>
-                    <?php endif; ?>
+                    <?php endif; endif; ?>
                 </div>
                 <?php if ($status === 'list') {
                     require('partials/task_form.php');
@@ -52,11 +53,12 @@
         <?php
         }
 
-        renderTaskListSection("Lista de tareas", "list", $tasks);
-        renderTaskListSection("En proceso", "inprogress", $tasks);
-        renderTaskListSection("Hecho", "done", $tasks);
-        renderTaskListSection("Descartar", "discard", $tasks);
-
+        if (isset($boards) && count($boards) > 0) {
+            renderTaskListSection("Lista de tareas", "list", $tasks);
+            renderTaskListSection("En proceso", "inprogress", $tasks);
+            renderTaskListSection("Hecho", "done", $tasks);
+            renderTaskListSection("Descartar", "discard", $tasks);
+        }
 
         if (isset($tasks) && count($tasks) >= 1) {
             require('partials/filters.php');

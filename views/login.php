@@ -6,28 +6,34 @@
     }
 ?>
 
-<main class="main">
-    <div class="container">
+<main class="main main--user">
+    <div class="container Card Card--user">
         <div class="row">
             <div class="col s12">
-                <h2>Iniciar sesión</h2>
+                <h3>Iniciar sesión</h3>
             </div>
         </div>
-        <form action="index.php?action=login" method="post">
-            <div class="input-field">
+        <form action="index.php?action=login" method="post" class="row">
+            <div class="input-field col s12">
                 <label for="email">Email</label>
                 <input type="email" name="email" class="form-control" required>
             </div>
-            <div class="input-field">
+            <div class="input-field col s12">
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" class="form-control" required>
             </div>
-            <div class="input-field">
+            <div class="input-field col s12">
                 <button type="submit" class="btn btn-primary" name="login-user">Iniciar sesión</button>
             </div>
         </form>
-        <?php require_once('partials/alerts.php') ?>
-        <p>¿No tienes una cuenta? <a href="index.php?action=register">Regístrate</a></p>
+        <div class="row">
+            <div class="col s12">
+                <?php require_once('partials/alerts.php') ?>
+            </div>
+            <div class="col s12">
+                <p>¿No tienes una cuenta? <a class="link" href="index.php?action=register">Regístrate</a></p>
+            </div>
+        </div>
     </div>
 </main>
 

@@ -41,7 +41,7 @@
                         endforeach;
                     else:
                         if ($status == 'list'): ?>
-                        <div class="js-init-intro-tasks h-pointer-none">
+                        <div class="h-pointer-none <?php if (count($tasks) == 0) echo "js-init-intro-tasks"; ?>">
                             <p class="js-not-tasks grey-text lighten-3">No hay tareas</p>
                         </div>
                     <?php endif; endif; ?>

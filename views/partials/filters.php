@@ -1,4 +1,4 @@
-<div id="dropdown-filter" class="fixed-action-btn click-to-toggle js-init-intro-filters">
+<div id="dropdown-filter" class="fixed-action-btn click-to-toggle <?php if (count($tasks) <=1 ) echo "js-init-intro-filters"; ?>">
     <a class="btn btn-floating btn-large waves-effect waves-light js-filters-btn">
         <i class="large material-icons">filter_list</i>
     </a>

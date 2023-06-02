@@ -10,7 +10,7 @@
     <div class="container Card Card--user">
         <div class="row">
             <div class="col s12">
-                <h3>Iniciar sesión</h3>
+                <h4 class="h-mb-0">Iniciar sesión</h4>
             </div>
         </div>
         <form action="index.php?action=login" method="post" class="row">

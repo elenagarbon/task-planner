@@ -10,7 +10,7 @@
     <div class="container Card Card--user">
         <div class="row">
             <div class="col s12">
-                <h3>Crear cuenta</h3>
+                <h4 class="h-mb-0">Crear cuenta</h4>
             </div>
         </div>
         <form action="index.php?action=register" method="post" class="row">

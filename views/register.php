@@ -3,7 +3,7 @@
 
     if(isset($_SESSION["user"])) {
         header('Location: index.php?action=dashboard');
-      }
+    }
 ?>
 
 <main class="main main--user">

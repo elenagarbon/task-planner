@@ -9,14 +9,11 @@
 <main class="main p-dashboard <?php if ($totalBoards == 0) echo "js-init-intro"; ?>">
     <?php require_once('layout/aside_nav.php');?>
 
-    <!-- mostrar tareas de X id_board-->
     <div class="section-tasks p-16">
-
         <?php
         function renderTaskListSection($sectionTitle, $status, $tasks)
         {
             $classList = ($status !== 'list') ? 'section-tasks-body--empty' : '';
-            // Ordenar las tareas por prioridad
             if (isset($tasks) && count($tasks) >= 1) {
                 usort($tasks, function($a, $b) {
                     $priorities = ['high', 'medium', 'low'];

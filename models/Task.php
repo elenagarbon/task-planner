@@ -59,7 +59,7 @@
             $stmt->bindParam(':type', $this->type);
             $stmt->bindParam(':expiration_date', $this->expiration_date);
             $stmt->bindParam(':id_task', $id_task);
-            return $stmt->execute();
+            return ($stmt->execute()) ? true : false;
         }
 
         public function delete($task_id) {

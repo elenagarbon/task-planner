@@ -29,7 +29,7 @@
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':title', $this->title);
             $stmt->bindParam(':id_board', $this->id_board);
-            return ($stmt->execute()) ? true : false;
+            return $stmt->execute();
         }
 
         public function list($id_board) {
@@ -59,14 +59,14 @@
             $stmt->bindParam(':type', $this->type);
             $stmt->bindParam(':expiration_date', $this->expiration_date);
             $stmt->bindParam(':id_task', $id_task);
-            return ($stmt->execute()) ? true : false;
+            return $stmt->execute();
         }
 
         public function delete($task_id) {
             $query = "DELETE from tasks WHERE id_task = :id_task";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":id_task", $task_id);
-            return ($stmt->execute()) ? true : false;
+            return $stmt->execute();
         }
 
         public function getTitle() {

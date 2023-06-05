@@ -1,0 +1,131 @@
+nav.main-nav  {
+    box-shadow: 0 8px 24px rgba(56,54,65,.1);
+    background-color: white;
+    color: var(--palet-1a);
+
+    * {
+      color: inherit;
+    }
+
+    .nav-wrapper{
+        padding: 0 16px;
+    }
+
+    i {
+        font-size: 2.5rem !important;
+    }
+
+    .sidenav-trigger{
+        margin: 0;
+    }
+
+    .brand-logo{
+        @media (max-width: $breakpoint-tablet) {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.navbar-fixed {
+    z-index: 1001 !important;
+}
+
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        justify-content: end;
+    }
+}
+
+.sidenav {
+
+    @media (min-width: $breakpoint-tablet-xl) {
+        height: calc(100% - 134px);
+        padding-bottom: 0;
+        top: 64px;
+        z-index: 1;
+    }
+
+    .user-view{
+        padding: 24px 24px 0;
+        margin-bottom: 0;
+
+        .name {
+            margin:0;
+        }
+
+        .user {
+            color: var(--palet-1a);
+            background: white;
+            display: inline-block;
+            height: 45px;
+            width: 45px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+
+            i {
+                font-size: 3rem;
+            }
+        }
+
+        .background{
+            background: var(--palet-1b);
+        }
+
+        .logout {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+        }
+    }
+    li {
+        a {
+            margin:0;
+            padding:0;
+            height: auto;
+            line-height: normal;
+
+            &.btn {
+                margin:0;
+
+                &-more {
+                    i.material-icons{
+                        margin: 0 12px 0;
+                        width: 24px;
+                        color: white;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                }
+            }
+
+            &:hover {
+                background: none;
+            }
+        }
+
+        &:hover {
+            background-color: rgba(0,0,0,.05);
+        }
+    }
+}
+
+.dropdown-trigger{
+    padding: 0;
+    padding-left: 16px;
+
+    @media (max-width: $breakpoint-tablet-xl) {
+        padding: 0;
+    }
+
+    &--login {
+        float: right;
+    }
+
+    &:hover {
+        background: transparent;
+    }
+}

@@ -1,0 +1,33 @@
+.Breadcrumb {
+    margin: 20px 0 10px;
+    color: #605e67;
+    display: flex;
+    font: 400 0.875rem/1.5rem IBM Plex Sans,-apple-system,system-ui,sans-serif;
+    list-style-type: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0;
+
+    li {
+        flex-shrink: 0;
+
+        &:not(:last-child) {
+            margin-right: 14px;
+
+            &:after{
+                content: ">";
+                margin-left: 14px;
+            }
+        }
+
+        &:last-child {
+            color: #88868d;
+        }
+    }
+
+    a {
+        color: inherit;
+        padding: 4px 0;
+    }
+
+}

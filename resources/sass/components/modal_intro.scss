@@ -1,0 +1,31 @@
+// change styles of modal intro
+.introjs-tooltip {
+    &.customTooltips {
+        .introjs {
+            &-prevbutton:not(.introjs-disabled) {
+                background-color: #fff;
+                color: var(--palet-1c);
+                border-color: var(--palet-1c);
+                text-shadow: none;
+            }
+
+            &-nextbutton {
+                background: var(--palet-1c);
+                color: #fff;
+                border-color: var(--palet-1c);
+                text-shadow: none;
+            }
+        }
+        input[type="checkbox"] {
+            position: relative;
+            opacity:1;
+            pointer-events: initial;
+        }
+    }
+}
+
+.introjs-helperLayer{
+    &.customLayer {
+        box-shadow: var(--palet-1c) 0px 0px 1px 2px, rgba(33, 33, 33, 0.5) 0px 0px 0px 5000px !important;
+    }
+}

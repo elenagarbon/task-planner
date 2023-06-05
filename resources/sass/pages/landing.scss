@@ -1,0 +1,77 @@
+.p-main{
+    nav {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    h2 {
+        font-size: 4.5rem;
+
+        @media (max-width: $breakpoint-tablet) {
+            font-size: 3rem;
+        }
+    }
+
+    &-first {
+        background:url('../../dist/images/first-pin.png');
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        background-size: 33%;
+        width:100%;
+        background-color: var(--palet-1b);
+        max-width: 100%;
+    }
+
+    &-second {
+        background:url('../../dist/images/second-pin.png');
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: 45%;
+        width:100%;
+        background-color: var(--palet-1a);
+        max-width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    &-third {
+        background:url('../../dist/images/third-pin.png');
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: 30%;
+        width:100%;
+        background-color: var(--palet-1c);
+        max-width: 100%;
+        text-align: right;
+        justify-content: flex-end;
+    }
+
+    &-bg {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        padding: 0 6%;
+
+        @media (max-width: $breakpoint-tablet) {
+            background-size: 80%;
+            align-items: flex-start;
+            background-position: center bottom;
+            text-align: center;
+            padding: 64px 16px 0;
+        }
+    }
+}
+
+.pin-top,
+.pin-bottom {
+    position: relative;
+}
+
+.pinned {
+    position: fixed !important;
+}
+
+.page-footer{
+    position: relative;
+    z-index: 3;
+}

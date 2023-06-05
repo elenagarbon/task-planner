@@ -13,7 +13,7 @@
         }
 
         public function createTask($board_id, $title) {
-            if (empty($board_id) || empty($title)) {
+            if (empty($title)) {
                 $_SESSION['error_message'] = 'Rellena el título de la tarea';
                 header("Location:index.php?action=show_board&id_board=".$board_id);
                 return;
@@ -45,7 +45,7 @@
             $expiration = null;
             if (empty($title)) {
                 $_SESSION['error_message'] = 'Rellena el título de la tarea';
-                header("Location:index.php?action=edit_task&task_id=".$task_id);
+                header("Location:index.php?action=edit_task&id_task=".$task_id);
                 return;
             }
 

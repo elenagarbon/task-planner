@@ -21,8 +21,7 @@
             $stmt->bindParam(':nickname', $this->username);
             $stmt->bindParam(':email', $this->email);
             $stmt->bindParam(':password', $this->password);
-            // Ejecutar la consulta y retornar true si se insertó correctamente
-            return ($stmt->execute()) ? true : false;
+            return $stmt->execute();
         }
 
         public function login($email, $password) {

@@ -1,0 +1,11 @@
+.modal {
+
+    &--small {
+        max-width: 425px;
+    }
+
+    &--medium {
+        max-width: 600px;
+        width: 90%;
+    }
+}

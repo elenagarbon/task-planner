@@ -1,0 +1,9 @@
+.font-header-title {
+    font: 400 2rem/2.5rem IBM Plex Sans,-apple-system,system-ui,sans-serif;
+}
+
+@media (min-width: 960px) {
+    .font-header-title {
+        font: 400 2.5rem/3.5rem IBM Plex Sans,-apple-system,system-ui,sans-serif;
+    }
+}

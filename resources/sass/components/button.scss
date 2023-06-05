@@ -1,0 +1,76 @@
+a.btn,
+button.btn {
+  background-color: var(--palet-1c);
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    background-color: var(--palet-1c) !important;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,.14), 0 1px 7px 0 rgba(0,0,0,.12), 0 3px 1px -1px rgba(0,0,0,.2);
+  }
+}
+
+.link {
+    color: var(--palet-1a);
+}
+
+.Button {
+    color: #ffffff;
+    align-items: center;
+    border: none;
+    border-radius: 6px;
+    display: inline-flex;
+    font: 500 0.875rem/1.5rem IBM Plex Sans,-apple-system,system-ui,sans-serif;
+    justify-content: center;
+    line-height: 1.3;
+    min-height: 40px;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
+    &--primary {
+        --color: #fff;
+        --backgroundColor: #ffb142;
+    }
+    &--secondary {
+        --color: #383641;
+        --backgroundColor: #fff;
+        border: 1px solid #ebeaec;
+    }
+    &--link {
+        --color: #ffb142;
+    }
+
+    &--disabled{
+        background-color: #dfdfdf!important;
+        box-shadow: none!important;
+        color: #9f9f9f!important;
+        cursor: default!important;
+    }
+}
+
+// boton fijo filtros
+.fixed-action-btn {
+    bottom: 90px;
+    right: 16px;
+    ul li {
+        margin-bottom: 8px;
+        height: 2.5rem;
+    }
+    .fab-tip {
+        position: fixed;
+        right: 17px;
+        padding: 0px 0.5rem;
+        text-align: right;
+        background-color: #323232;
+        border-radius: 2px;
+        color: #ffffff;
+        width: auto;
+        height: 35px;
+        line-height: 35px;
+        &.active {
+            background: var(--palet-1a);
+        }
+    }
+}

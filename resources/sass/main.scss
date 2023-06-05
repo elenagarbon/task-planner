@@ -1,0 +1,37 @@
+:root {
+    --bg-main: #f5f5f5;
+    --text-main: #383641;
+    --secondary-color: #6c757d;
+
+    --palet-1a : rgb(46, 75, 242);
+    --palet-1b : rgb(242, 153, 227);
+    --palet-1c : rgb(234, 47, 174);
+}
+
+$breakpoint-mobile: 375px;
+$breakpoint-tablet: 768px;
+$breakpoint-tablet-xl: 993px;
+$breakpoint-desktop: 1024px;
+$breakpoint-large: 1248px;
+
+@import './components/index.scss';
+@import './base/index.scss';
+@import './helpers/index.scss';
+@import './pages/index.scss';
+
+footer.page-footer {
+  background-color: var(--palet-1a);
+
+  @media (min-width: $breakpoint-tablet) {
+      z-index: 1000;
+  }
+  .footer-copyright{
+    color: var(--palet-1a);
+    background-color: white;
+    padding: 0 16px;
+  }
+}
+
+.Alert--float {
+  z-index: 1001 !important;
+}

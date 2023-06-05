@@ -18,7 +18,6 @@
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':name', $this->name);
             $stmt->bindParam(':id_user', $this->user_id);
-            // función lastInsertId() obtener el ID del tablón recién creado del objeto de conexión PDO después de ejecutar la consulta de inserción
             return ($stmt->execute()) ? $this->conn->lastInsertId(): false;
         }
 
@@ -34,7 +33,7 @@
             $query = "DELETE from boards WHERE id_board = :id_board";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":id_board", $board_id);
-            return ($stmt->execute()) ? true : false;
+            return $stmt->execute();
         }
 
         public function getFirstBoard($user_id) {

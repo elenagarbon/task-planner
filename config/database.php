@@ -1,9 +1,9 @@
 <?php
     class Database {
         private $host = "localhost";
-        private $db_name = "bbdd_task_planner";
-        private $username = "root";
-        private $password = "";
+        private $db_name = "id20854793_taskplannerpro";
+        private $username = "id20854793_elenagarbon";
+        private $password = "mL=49XVm";
         public $conn;
 
         public function getConnection() {

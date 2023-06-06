@@ -4,17 +4,6 @@
 
 <?php include(__DIR__ . '/../partials/alerts_session.php'); ?>
 
-
-<!-- Scripts de Bootstrap -->
-<script src="<?php echo BASE_URL; ?>node_modules/materialize-css/dist/js/materialize.min.js"></script>
-
-<!-- Scripts intro.js -->
-<script src="<?php echo BASE_URL; ?>node_modules/intro.js/minified/intro.min.js"></script>
-
-<!-- Scripts Sortable -->
-<script src="<?php echo BASE_URL; ?>node_modules/sortablejs/Sortable.min.js"></script>
-
-<!-- Scripts personalizados -->
 <script src="<?php echo BASE_URL; ?>dist/js/scripts.js"></script>
 
 </body>

@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const newStatus = this.dataset.status;
     const taskId = dragItem.dataset.taskid;
 
-    const url = "../task-planner/controllers/update_status.php";
+    const url = "https://taskplannerpro.000webhostapp.com/task-planner/controllers/update_status.php";
     const data = {
       task_id: taskId,
       status: newStatus

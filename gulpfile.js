@@ -11,7 +11,8 @@ var imageminPngquant = require('imagemin-pngquant');
 
 gulp.task('sass', function(done) {
   gulp.src([
-    'node_modules/materialize-css/dist/css/materialize.min.css',
+    'node_modules/materialize-css/sass/**/*',
+    'node_modules/intro.js/minified/introjs.min.css',
     'resources/sass/*.scss'
   ])
     .pipe(sass().on('error', sass.logError))
@@ -25,7 +26,12 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('minify-js', function(done) {
-  return gulp.src('resources/js/*.js')
+  gulp.src([
+    'node_modules/materialize-css/dist/js/materialize.min.js',
+    'node_modules/intro.js/minified/intro.min.js',
+    'node_modules/sortablejs/Sortable.min.js',
+    'resources/js/*.js'
+  ])
     .pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))

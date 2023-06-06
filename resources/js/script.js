@@ -275,13 +275,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function filterTasksByExpiry() {
-    const currentDate  = new Date();
+    const currentDate = new Date();
+    const nextDay = getNextDay(currentDate);
 
     tasks.forEach((task) => {
       const expiryDate = task.getAttribute("data-exp");
       const expirationDate = new Date(expiryDate);
 
-      if (expiryDate && expirationDate <= getNextDay(currentDate )) {
+      if (expiryDate && expirationDate < nextDay && expirationDate >= currentDate) {
         task.style.display = "block";
       } else {
         task.style.display = "none";
@@ -359,6 +360,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const taskId = dragItem.dataset.taskid;
 
     const url = "../task-planner/controllers/update_status.php";
+    // const url = "https://taskplannerpro.000webhostapp.com/task-planner/controllers/update_status.php";
     const data = {
       task_id: taskId,
       status: newStatus

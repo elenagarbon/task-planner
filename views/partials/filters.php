@@ -8,8 +8,9 @@
         <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="high">Prioridad alta</a></li>
         <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="type" data-type="payment">Pagos pendientes</a></li>
         <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="type" data-type="birthday">Cumpleaños</a></li>
-        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="type" data-type="study">Estudios</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="type" data-type="student">Estudios</a></li>
         <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="type" data-type="work">Trabajo</a></li>
+        <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="type" data-type="house">Casa</a></li>
         <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="type" data-type="other">Otros</a></li>
         <li><a href="#!" class="btn-floating fab-tip js-filter-btn" data-filter="show_all">Mostrar todas</a></li>
     </ul>

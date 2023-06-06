@@ -1,5 +1,4 @@
-a.btn,
-button.btn {
+.btn {
   background-color: var(--palet-1c);
   box-shadow: none;
 
@@ -8,6 +7,18 @@ button.btn {
     background-color: var(--palet-1c) !important;
     box-shadow: 0 3px 3px 0 rgba(0,0,0,.14), 0 1px 7px 0 rgba(0,0,0,.12), 0 3px 1px -1px rgba(0,0,0,.2);
   }
+
+  &-disabled{
+        background-color: #dfdfdf!important;
+        box-shadow: none!important;
+        color: #9f9f9f!important;
+        cursor: default!important;
+
+        &:hover,
+        &:focus {
+            background-color: #dfdfdf !important;
+        }
+    }
 }
 
 .link {
@@ -40,13 +51,6 @@ button.btn {
     }
     &--link {
         --color: #ffb142;
-    }
-
-    &--disabled{
-        background-color: #dfdfdf!important;
-        box-shadow: none!important;
-        color: #9f9f9f!important;
-        cursor: default!important;
     }
 }
 

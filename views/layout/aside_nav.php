@@ -8,7 +8,7 @@
             <h5>Mis tablones</h5>
             <?php if (isset($boards)):
                     if ($totalBoards > 4): ?>
-                        <a class="btn btn-more tooltipped Button--disabled" data-position="bottom" data-tooltip="Elimina un tablón para crear más"><i class="large material-icons">add</i></a>
+                        <a class="btn btn-disabled btn-more tooltipped" data-position="bottom" data-tooltip="Elimina un tablón para crear más"><i class="large material-icons">add</i></a>
                     <?php else: ?>
                         <a class="btn btn-more waves-effect waves-light modal-trigger tooltipped" data-position="bottom" data-tooltip="Crear un tablón" <?php if (count($boards) > 4) { echo "disabled"; } ?> href="#modal_create_board" id="openModalButton">
                             <i class="large material-icons">add</i>
